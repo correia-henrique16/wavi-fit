@@ -1,0 +1,37 @@
+import { z } from "zod";
+
+
+export const LoginSchema = z.object({
+  email: z.string().email("E-mail inválido").transform(e => e.toLowerCase()),
+  password: z.string().min(1, 'A password é obrigatória')
+});
+
+
+export const SignupSchema = LoginSchema.extend({
+    name: z.string()
+        .min(2, "Minimo de 2 caratéres no nome"),
+
+    password: z.string()
+        .min(8, "A password deve ter pelo menos 8 caracteres")
+        .refine((value) => /[A-Z]/.test(value), {
+        message: "A password deve conter pelo menos uma letra maiúscula",
+        })
+        .refine((value) => /[a-z]/.test(value), {
+        message: "A password deve conter pelo menos uma letra minúscula",
+        })
+        .refine((value) => /[!@#$%^&*(),.?":{}|<>]/.test(value), {
+        message: "A password deve conter pelo menos um carater especial (!@#$...)",
+        }),
+
+    confirmPassword: z.string().min(1, "Confirme a sua password"),
+
+})
+.refine((dados) => dados.password === dados.confirmPassword, {
+  message: "As passwords não coincidem",
+  path: ["confirmPassword"], // Isto diz ao Zod para "atirar" o erro para o campo confirmPassword
+});
+
+
+
+export type TypeLogin = z.infer<typeof LoginSchema>;
+export type TypeSignUp = z.infer<typeof SignupSchema>;
