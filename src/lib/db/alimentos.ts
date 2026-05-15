@@ -1,7 +1,9 @@
-import supabase from "../supabase/client";
+import { createClient } from "../supabase/server";
 import { TypeAlimento } from "@/models/Alimento";
 
 export async function getAlimentos() {
+    const supabase = await createClient()
+
     const {data, error} = await supabase
     .from('alimentos')
     .select('*')
@@ -16,6 +18,8 @@ export async function getAlimentos() {
 }
 
 export async function addAlimento(novoAlimento: TypeAlimento) {
+    const supabase = await createClient()
+    
     const {error} = await supabase
     .from('alimentos')
     .insert ([novoAlimento])
