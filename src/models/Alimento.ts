@@ -5,27 +5,21 @@ export const AlimentoSchema = z.object({
         .min(2, 'O nome deve ter no minimo 2 letras')
         .max(20, 'O nome não pode ter mais que 20 carateres'),
 
-    kcal: z.number()
+    kcal: z.coerce.number()
         .min(0, "As calorias não podem ser negativas")
-        .max(5000, 'As caloritas têm o máximo de 5000'),
+        .max(5000, 'As calorias têm o máximo de 5000'),
 
-    protein: z.number()
+    protein: z.coerce.number()
         .min(0, "A proteina não pode ser negativa")
         .max(5000, 'A proteia tem o máximo de 5000'),
 
-    carbohydrates: z.number()
+    carbohydrates: z.coerce.number()
         .min(0, "Os hidratos não podem ser negativos")
         .max(5000, 'Os hidratos têm o máximo de 5000'),
 
-    fat: z.number()
+    fat: z.coerce.number()
         .min(0, "A gordura não pode ser negativa")
         .max(5000, 'As gorduras têm o máximo de 5000'),
-    
-    verified: z.literal(false, {
-        message: 'Este campo tem que ser falso!'
-    }),
-
-    user_id: z.uuid().min(0)
 })
 
 //para autocomplete do vscode e detetar erros

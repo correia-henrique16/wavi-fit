@@ -1,0 +1,52 @@
+'use client'
+
+import useAlimentos from "@/hooks/useAlimentos"
+
+export default function AddAlimentoForm() {
+
+    const { errors, loading, serverError, success, handleSubmit } = useAlimentos()
+    
+        const listaErros = [
+            ...(errors?.email?._errors || []),
+            ...(errors?.password?._errors || []),
+            ...(serverError ? [serverError] : [])
+        ]
+
+    return(
+        <form onSubmit={handleSubmit}>
+            <label htmlFor="name-input">Nome</label>
+            <input type="text" name="name" id="name-input"/>
+            
+            <label htmlFor="kcal-input">Calorias</label>
+            <input type="number" name="kcal" id="kcal-input"/>
+            
+            <label htmlFor="hydrates-input">Hidratos</label>
+            <input type="number" name="carbohydrates" id="hydrates-input"/>
+            
+            <label htmlFor="protein-input">Proteína</label>
+            <input type="number" name="protein" id="protein-input"/>
+            
+            <label htmlFor="fat-input">Gordura</label>
+            <input type="number" name="fat" id="fat-input"/>
+
+            <div> 
+                {listaErros.length > 0 && (
+                <p className="text-red-500 text-sm font-medium">
+                    {listaErros[0]} {/* Mostra apenas o primeiro erro da lista */}
+                </p>
+                )}
+
+                {success != '' && (
+                    <p className="text-green-500 text-sm font-medium">
+                        {success}
+                    </p>
+                )}
+            </div>
+            
+            <button type="submit">
+                {loading ? 'A adicionar...' : 'Adicionar'}
+            </button>
+        </form>
+    )
+
+}

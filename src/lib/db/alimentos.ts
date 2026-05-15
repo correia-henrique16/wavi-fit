@@ -1,5 +1,6 @@
 import { createClient } from "../supabase/server";
 import { TypeAlimento } from "@/models/Alimento";
+import { getRequiredUser } from "../supabase/user";
 
 export async function getAlimentos() {
     const supabase = await createClient()
@@ -18,15 +19,23 @@ export async function getAlimentos() {
 }
 
 export async function addAlimento(novoAlimento: TypeAlimento) {
+    const user = await getRequiredUser()
+
     const supabase = await createClient()
     
-    const {error} = await supabase
+    const {data, error} = await supabase
     .from('alimentos')
-    .insert ([novoAlimento])
+    .insert ([{
+        ...novoAlimento,
+        verified: false,
+        user_id: user.id
+    }])
+    .select()
 
     if (error) {
         throw new Error(error.message)
     } else {
         console.log('Adicionado : ', novoAlimento)
+        return data
     }
 }

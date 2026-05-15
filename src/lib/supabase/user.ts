@@ -1,0 +1,12 @@
+import { createClient } from "./server";
+
+export async function getRequiredUser() {
+  const supabase = await createClient();
+  const { data: { user }, error } = await supabase.auth.getUser();
+
+  if (error || !user) {
+    throw new Error("Não autorizado: Tens de fazer login primeiro.");
+  }
+
+  return user;
+}
