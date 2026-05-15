@@ -26,7 +26,6 @@ export async function POST(request: Request) {
     }
 
 
-
     try {
         const novoAlimento = await addAlimento(dadosProntos)
         return NextResponse.json(novoAlimento, {status: 201})
