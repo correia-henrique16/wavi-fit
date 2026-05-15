@@ -23,7 +23,9 @@ export const AlimentoSchema = z.object({
     
     verified: z.literal(false, {
         message: 'Este campo tem que ser falso!'
-    })
+    }),
+
+    user_id: z.uuid().min(0)
 })
 
 //para autocomplete do vscode e detetar erros
