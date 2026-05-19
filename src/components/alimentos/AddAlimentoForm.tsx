@@ -18,16 +18,16 @@ export default function AddAlimentoForm() {
             <input type="text" name="name" id="name-input"/>
             
             <label htmlFor="kcal-input">Calorias</label>
-            <input type="number" name="kcal" id="kcal-input"/>
+            <input type="number" name="kcal" id="kcal-input" min="0"/>
             
             <label htmlFor="hydrates-input">Hidratos</label>
-            <input type="number" name="carbohydrates" id="hydrates-input"/>
+            <input type="number" name="carbohydrates" id="hydrates-input" min="0"/>
             
             <label htmlFor="protein-input">Proteína</label>
-            <input type="number" name="protein" id="protein-input"/>
+            <input type="number" name="protein" id="protein-input" min="0"/>
             
             <label htmlFor="fat-input">Gordura</label>
-            <input type="number" name="fat" id="fat-input"/>
+            <input type="number" name="fat" id="fat-input" min="0"/>
 
             <div> 
                 {listaErros.length > 0 && (

@@ -12,7 +12,7 @@ export async function getAlimentos() {
 
     if (error) {
         console.error('Erro ao buscar alimentos: ', error);
-        return []
+        return error
     } else {
         return data
     }
