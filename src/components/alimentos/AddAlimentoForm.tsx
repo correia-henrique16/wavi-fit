@@ -1,6 +1,6 @@
 'use client'
 
-import useAlimentos from "@/hooks/useAlimentos"
+import useAlimentos from "@/hooks/alimentos/useAlimentos"
 
 export default function AddAlimentoForm() {
 
