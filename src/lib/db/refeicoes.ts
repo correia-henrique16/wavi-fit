@@ -115,7 +115,6 @@ export async function editRefeicao(idRefeicao: number, novosDados: TypeRefeicao)
     if (error) {
         throw new Error(error.message)
     } else {
-        console.log('data', data[0])
         const responseDelete = await supabase
         .from('refeicao_alimentos')
         .delete()

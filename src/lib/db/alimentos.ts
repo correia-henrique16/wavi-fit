@@ -38,3 +38,40 @@ export async function addAlimento(novoAlimento: TypeAlimento) {
         return data
     }
 }
+
+export async function delAlimento(idAlimento: number) {
+    const supabase = await createClient()
+    const user = await getRequiredUser()
+    
+    const { data, error } = await supabase
+    .from('alimentos')
+    .delete()
+    .eq('id', idAlimento)
+    .eq('user_id', user.id)
+    .select()
+
+    if (error) {
+        throw new Error(error.message)
+    } else {
+        return (data)
+    }
+}
+
+export async function editAlimento(idAlimento: number, novosDados: TypeAlimento) {
+    const supabase = await createClient()
+    const user = await getRequiredUser()
+
+    const {data, error} = await supabase
+    .from('alimentos')
+    .update(novosDados)
+    .eq('id', idAlimento)
+    .eq('user_id', user.id)
+    .select()
+
+
+    if (error) {
+        throw new Error(error.message)
+    } else {
+        return data
+    }
+}
