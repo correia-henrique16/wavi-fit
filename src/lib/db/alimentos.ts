@@ -35,7 +35,6 @@ export async function addAlimento(novoAlimento: TypeAlimento) {
     if (error) {
         throw new Error(error.message)
     } else {
-        console.log('Adicionado : ', novoAlimento)
         return data
     }
 }

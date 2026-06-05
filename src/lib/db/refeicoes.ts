@@ -43,3 +43,40 @@ export async function getRefeicoesUser() {
 
     return refeicoesFinal
 }
+
+export async function addRefeicao(novaRefeicao: TypeRefeicao) {
+    const supabase = await createClient()
+    const user = await getRequiredUser()
+
+    const {alimentos, ...refeicao} = novaRefeicao
+
+
+    const {data, error} = await supabase
+    .from('refeicoes')
+    .insert(([{
+        ...refeicao,
+        user_id: user.id
+    }]))
+    .select()
+
+    if (error) {
+        throw new Error(error.message)
+    } else {
+        
+        const id = data[0].id
+        const {error} = await supabase
+        .from('refeicao_alimentos')
+        .insert(alimentos.map(alimento => ({
+            refeicao_id: id,
+            alimento_id: alimento.alimento_id,
+            quantidade: alimento.quantidade
+        })))
+
+        if(error) {
+            throw new Error(error.message)
+        } else {
+            return (data)
+        }
+    }
+
+}
