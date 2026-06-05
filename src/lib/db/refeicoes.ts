@@ -80,3 +80,21 @@ export async function addRefeicao(novaRefeicao: TypeRefeicao) {
     }
 
 }
+
+export async function delRefeicao(idRefeicao: number) {
+    const supabase = await createClient()
+    const user = await getRequiredUser()
+    
+    const { data, error } = await supabase
+    .from('refeicoes')
+    .delete()
+    .eq('id', idRefeicao)
+    // .eq('user_id', user.id)
+    .select()
+
+    if (error) {
+        throw new Error(error.message)
+    } else {
+        return (data)
+    }
+}
