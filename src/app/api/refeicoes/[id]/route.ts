@@ -1,4 +1,5 @@
-import { delRefeicao } from "@/lib/db/refeicoes"
+import { delRefeicao, editRefeicao } from "@/lib/db/refeicoes"
+import { RefeicaoSchema } from "@/models/Refeicao";
 import { NextResponse } from "next/server"
 
 export async function DELETE(request: Request, {params}: {params: Promise<{id: string}>}) {
@@ -13,4 +14,27 @@ export async function DELETE(request: Request, {params}: {params: Promise<{id: s
         return NextResponse.json({error: 'Erro ao apagar refeição'}, {status: 500})
     }
 
+}
+
+export async function PUT(request: Request, {params}: {params: Promise<{id: string}>}) {
+    const data = await request.json()
+
+    const validacao = RefeicaoSchema.safeParse(data)
+
+    if (!validacao.success) {
+        return NextResponse.json({erros: validacao.error.format()}, {status: 400})
+    }
+
+    const novosDados = validacao.data
+    
+    const {id} = await params
+
+    const idInt = parseInt(id)
+
+    try {
+        const editado = await editRefeicao(idInt, novosDados)
+        return NextResponse.json(editado, {status: 200})
+    } catch (error) {
+        return NextResponse.json({error: 'Erro ao editar'}, {status: 500})
+    }
 }

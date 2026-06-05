@@ -89,12 +89,46 @@ export async function delRefeicao(idRefeicao: number) {
     .from('refeicoes')
     .delete()
     .eq('id', idRefeicao)
-    // .eq('user_id', user.id)
+    .eq('user_id', user.id)
     .select()
 
     if (error) {
         throw new Error(error.message)
     } else {
         return (data)
+    }
+}
+
+export async function editRefeicao(idRefeicao: number, novosDados: TypeRefeicao) {
+    const supabase = await createClient()
+    const user = await getRequiredUser()
+
+    const {alimentos, ...dadosRefeicao} = novosDados
+
+    const {data, error} = await supabase
+    .from('refeicoes')
+    .update(dadosRefeicao)
+    .eq('id', idRefeicao)
+    .eq('user_id', user.id)
+    .select()
+
+    if (error) {
+        throw new Error(error.message)
+    } else {
+        console.log('data', data[0])
+        const responseDelete = await supabase
+        .from('refeicao_alimentos')
+        .delete()
+        .eq('refeicao_id', data[0].id)
+
+        const responseInsert = await supabase
+        .from('refeicao_alimentos')
+        .insert(alimentos.map(alimento => ({
+            refeicao_id: data[0].id,
+            alimento_id: alimento.alimento_id,
+            quantidade: alimento.quantidade
+        })))
+
+        return data
     }
 }
