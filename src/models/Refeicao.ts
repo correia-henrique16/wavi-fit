@@ -12,8 +12,11 @@ export const RefeicaoSchema = z.object({
                 .min(1, 'A quantidade deve ser pelo menos 1g')
                 .max(1000000, 'A quantidade pode ter no máximo 1M g')
         })
-    ).min(1, 'A refeição deve ter pelo menos 1 ingrediente')
-    
+    ).min(1, 'A refeição deve ter pelo menos 1 ingrediente'),
+
+    tipo_refeicao: z.int()
+        .min(1, 'Tem que escolher um dos tipos de refeição')
+        .max(4, 'Tem que escolher um dos tipos de refeição')
 })
 
 //para autocomplete do vscode e detetar erros
