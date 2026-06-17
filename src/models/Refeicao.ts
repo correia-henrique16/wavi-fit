@@ -16,7 +16,9 @@ export const RefeicaoSchema = z.object({
 
     tipo_refeicao: z.int()
         .min(1, 'Tem que escolher um dos tipos de refeição')
-        .max(4, 'Tem que escolher um dos tipos de refeição')
+        .max(4, 'Tem que escolher um dos tipos de refeição'),
+
+    data_refeicao: z.string().date()
 })
 
 //para autocomplete do vscode e detetar erros
