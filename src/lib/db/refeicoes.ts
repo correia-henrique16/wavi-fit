@@ -69,7 +69,7 @@ export async function addRefeicao(novaRefeicao: TypeRefeicao) {
         .insert(alimentos.map(alimento => ({
             refeicao_id: id,
             alimento_id: alimento.alimento_id,
-            quantidade: alimento.quantidade
+            quantidade: alimento.quantidade,
         })))
 
         if(error) {

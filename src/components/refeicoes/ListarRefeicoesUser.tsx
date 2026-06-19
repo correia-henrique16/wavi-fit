@@ -24,7 +24,7 @@ export default function ListarRefeicoesUser() {
                         </div>
                     ))}
                     
-                    <p>{refeicao.created_at}</p>
+                    <p>{refeicao.data_refeicao}</p>
                 </li>
             )}
         </ul>
