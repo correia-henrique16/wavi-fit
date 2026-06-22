@@ -1,5 +1,5 @@
 import { createClient } from "../supabase/server";
-import { TypeAlimento } from "@/models/Alimento";
+import { TypeAlimento } from "@/models/input/Alimento";
 import { getRequiredUser } from "../supabase/user";
 
 export async function getAlimentos() {

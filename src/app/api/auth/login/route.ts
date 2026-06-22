@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { LoginSchema } from "@/models/User";
+import { LoginSchema } from "@/models/input/User";
 import { login } from "@/lib/auth/auth";
 
 

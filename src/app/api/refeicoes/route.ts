@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getRefeicoesUser, addRefeicao } from "@/lib/db/refeicoes";
-import { RefeicaoSchema } from "@/models/Refeicao";
+import { RefeicaoSchema } from "@/models/input/Refeicao";
 
 export async function GET() {
     try {

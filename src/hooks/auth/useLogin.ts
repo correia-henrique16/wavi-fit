@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { LoginSchema } from "@/models/User"
+import { LoginSchema } from "@/models/input/User"
 
 export function useLogin() {
 

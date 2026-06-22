@@ -1,5 +1,5 @@
 import { createClient } from "../supabase/server";
-import { TypeSignUp, TypeLogin } from "@/models/User";
+import { TypeSignUp, TypeLogin } from "@/models/input/User";
 
 export async function signUp(dados: TypeSignUp) {
     const supabase = await createClient()

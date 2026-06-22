@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { SignupSchema } from "@/models/User";
+import { SignupSchema } from "@/models/input/User";
 
 export function useSignUp() {
     const router = useRouter()

@@ -1,5 +1,5 @@
 import { delRefeicao, editRefeicao } from "@/lib/db/refeicoes"
-import { RefeicaoSchema } from "@/models/Refeicao";
+import { RefeicaoSchema } from "@/models/input/Refeicao";
 import { NextResponse } from "next/server"
 
 export async function DELETE(request: Request, {params}: {params: Promise<{id: string}>}) {

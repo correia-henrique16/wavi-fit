@@ -1,5 +1,5 @@
 import { createClient } from "../supabase/server";
-import { TypeRefeicao } from "@/models/Refeicao";
+import { TypeRefeicao } from "@/models/input/Refeicao";
 import { getRequiredUser } from "../supabase/user";
 
 export async function getRefeicoesUser() {
