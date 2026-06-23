@@ -1,7 +1,16 @@
 import { TipoRefeicao } from "@/models/db-types/TipoRefeicao"
 import { Alimento } from "@/models/db-types/Alimento"
+import { Dispatch, SetStateAction } from 'react';
 
-export default function AddRefeicoes({tipos, alimentos}: {tipos: TipoRefeicao[], alimentos:Alimento[]}) {
+interface ChildProps {
+    tipos: TipoRefeicao[],
+    alimentosFiltrados: Alimento[],
+    setPesquisaAtual: Dispatch<SetStateAction<string>>,
+    setShowAmount: Dispatch<SetStateAction<number>>,
+    showAmount: number
+}
+
+export default function AddRefeicoes({tipos, alimentosFiltrados, setPesquisaAtual, setShowAmount, showAmount}: ChildProps) {
     return(
         <form action="">
             <div>
@@ -23,6 +32,26 @@ export default function AddRefeicoes({tipos, alimentos}: {tipos: TipoRefeicao[],
             <div>
                 <label htmlFor="name-input">Nome</label>
                 <input type="text" name="" id="name-input" />
+            </div>
+
+
+            <div>
+                <label htmlFor="alimentos-input">Selecionar Alimentos</label>
+                <input type="text" id="alimentos-input" onChange={(e) => {setPesquisaAtual(e.target.value)}}/>
+                <div>
+                    {alimentosFiltrados.map(alimento => {
+                        return(
+                            <button key={alimento.id} value={alimento.id}>{alimento.name}</button>
+                            // <option key={alimento.id} value={alimento.id}>{alimento.name}</option>
+                        )
+                    })}
+
+                    <button type="button" onClick={() => setShowAmount(showAmount + 5)}>Carregar mais...</button>
+                </div>
+
+                <select name="">
+                    
+                </select>
             </div>
         </form>
     )
