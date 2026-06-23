@@ -1,6 +1,7 @@
 import { TipoRefeicao } from "@/models/db-types/TipoRefeicao"
+import { Alimento } from "@/models/db-types/Alimento"
 
-export default function AddRefeicoes({tipos}: {tipos: TipoRefeicao[]}) {
+export default function AddRefeicoes({tipos, alimentos}: {tipos: TipoRefeicao[], alimentos:Alimento[]}) {
     return(
         <form action="">
             <div>

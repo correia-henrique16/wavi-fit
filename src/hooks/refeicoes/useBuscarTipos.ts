@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { TipoRefeicao } from "@/models/db-types/TipoRefeicao"
 
 export default function useBuscarTipos() {
-    const [loading, setLoading] = useState(true)
+    const [loadingTipo, setLoading] = useState(true)
     const [tipos, setTipos] = useState<TipoRefeicao[]>([])
 
     const carregarTipos = async () => {
@@ -27,5 +27,5 @@ export default function useBuscarTipos() {
         carregarTipos()
     }, [])
 
-    return{ loading, tipos }
+    return{ loadingTipo, tipos }
 }

@@ -8,7 +8,7 @@ export async function getAlimentos() {
 
     const {data, error} = await supabase
     .from('alimentos')
-    .select('*')
+    .select('id, name, kcal, protein, carbohydrates, fat, verified')
     .or(`verified.eq.true, user_id.eq.${user.id}`)
     .order('name', {ascending: true})
 

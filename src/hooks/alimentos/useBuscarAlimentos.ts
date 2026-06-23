@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"
+import { Alimento } from "@/models/db-types/Alimento"
 
 export default function useBuscarAlimentos() {
     const [loadingAlimentos, setLoading] = useState(true)
-    const [alimentos, setAlimentos] = useState()
+    const [alimentos, setAlimentos] = useState<Alimento[]>([])
 
     const carregarAlimentos = async () => {
         setLoading(true)
