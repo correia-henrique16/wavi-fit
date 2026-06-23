@@ -1,6 +1,7 @@
 import { TipoRefeicao } from "@/models/db-types/TipoRefeicao"
 import { Alimento } from "@/models/db-types/Alimento"
 import { Dispatch, SetStateAction } from 'react';
+import Link from "next/link";
 
 interface ChildProps {
     tipos: TipoRefeicao[],
@@ -39,6 +40,8 @@ export default function AddRefeicoes({tipos, alimentosFiltrados, setPesquisaAtua
                 <label htmlFor="alimentos-input">Selecionar Alimentos</label>
                 <input type="text" id="alimentos-input" onChange={(e) => {setPesquisaAtual(e.target.value)}}/>
                 <div>
+                    <Link href="/alimentos/">Adicionar novo Alimento</Link>
+
                     {alimentosFiltrados.map(alimento => {
                         return(
                             <button key={alimento.id} value={alimento.id}>{alimento.name}</button>

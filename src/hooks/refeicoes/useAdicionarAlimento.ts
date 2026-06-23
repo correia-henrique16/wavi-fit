@@ -7,7 +7,7 @@ export default function useAdicionarAlimento() {
 
     const {alimentos} = useBuscarAlimentos()
 
-    const listaFiltrada = alimentos.filter(alimento => alimento.name.includes(pesquisaAtual))
+    const listaFiltrada = alimentos.filter(alimento => alimento.name.toLowerCase().includes(pesquisaAtual.toLowerCase()))
 
     const alimentosFiltrados = listaFiltrada.slice(0, showAmount)
 
