@@ -5,6 +5,7 @@ import useBuscarTipos from "@/hooks/refeicoes/useBuscarTipos"
 import useBuscarAlimentos from "@/hooks/alimentos/useBuscarAlimentos"
 import useAdicionarAlimento from "@/hooks/refeicoes/useAdicionarAlimento"
 import ModalAdicionarAlimentos from "@/components/refeicoes/Modals/ModalAdicionarAlimentos"
+import ListarAlimentosRefeicao from "./ListarAlimentosRefeicao"
 
 export default function AddRefeicaoClient({modal} : {modal:string | undefined}) {
 
@@ -24,8 +25,9 @@ export default function AddRefeicaoClient({modal} : {modal:string | undefined}) 
                 setShowAmount={setShowAmount} showAmount={showAmount} setShowModalAdd={setShowModalAdd} showModalAdd={showModalAdd}
                 setShowModalQtd={setShowModalQtd} showModalQtd={showModalQtd}
                 setAlimentoSelecionado={setAlimentoSelecionado} alimentoSelecionado={alimentoSelecionado}
-                setAlimentosAdicionados={setAlimentosAdicionados} alimentosAdicionados={alimentosAdicionados}/> 
-            
+                setAlimentosAdicionados={setAlimentosAdicionados} alimentosAdicionados={alimentosAdicionados}
+            /> 
+            <ListarAlimentosRefeicao alimentosAdicionados={alimentosAdicionados}/>
         </main>
         
     )
