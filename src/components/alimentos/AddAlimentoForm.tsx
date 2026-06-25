@@ -36,7 +36,7 @@ export default function AddAlimentoForm() {
                 <div> 
                     {listaErros.length > 0 && (
                     <p className="text-red-500 text-sm font-medium">
-                        {listaErros[0]} {/* Mostra apenas o primeiro erro da lista */}
+                        {listaErros[0]}
                     </p>
                     )}
 

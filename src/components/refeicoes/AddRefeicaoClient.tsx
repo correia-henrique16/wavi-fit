@@ -20,13 +20,16 @@ export default function AddRefeicaoClient({modal} : {modal:string | undefined}) 
     return(
         <main>
             <h1>Adicionarr refeições</h1>
-            <AddRefeicoes tipos={tipos} setShowModal={setShowModalAdd} modal={modal}/>
+            
+            <AddRefeicoes tipos={tipos} setShowModal={setShowModalAdd} modal={modal} alimentosAdicionados={alimentosAdicionados}/>
+            
             <ModalAdicionarAlimentos  alimentosFiltrados={alimentosFiltrados} setPesquisaAtual={setPesquisaAtual}
                 setShowAmount={setShowAmount} showAmount={showAmount} setShowModalAdd={setShowModalAdd} showModalAdd={showModalAdd}
                 setShowModalQtd={setShowModalQtd} showModalQtd={showModalQtd}
                 setAlimentoSelecionado={setAlimentoSelecionado} alimentoSelecionado={alimentoSelecionado}
                 setAlimentosAdicionados={setAlimentosAdicionados} alimentosAdicionados={alimentosAdicionados}
             /> 
+
             <ListarAlimentosRefeicao alimentosAdicionados={alimentosAdicionados}/>
         </main>
         

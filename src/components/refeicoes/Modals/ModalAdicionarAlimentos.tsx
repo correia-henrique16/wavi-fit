@@ -28,8 +28,6 @@ export default function ModalAdicionarAlimentos({alimentosFiltrados, setPesquisa
     
     const router = useRouter()
     const pathname = usePathname()
-
-    console.log(alimentosAdicionados)
     
     if (showModalAdd == false) {
         return null
