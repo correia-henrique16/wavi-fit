@@ -9,8 +9,8 @@ export const RefeicaoSchema = z.object({
         z.object({
             alimento_id: z.coerce.number(),
             quantidade: z.coerce.number()
-                .min(1, 'A quantidade deve ser pelo menos 1g')
-                .max(1000000, 'A quantidade pode ter no máximo 1M g')
+                .min(0.01, 'A quantidade deve ser pelo menos 0.01')
+                .max(1000000, 'A quantidade pode ter no máximo 1M')
         })
     ).min(1, 'A refeição deve ter pelo menos 1 ingrediente'),
 

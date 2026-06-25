@@ -1,17 +1,20 @@
 import { TipoRefeicao } from "@/models/db-types/TipoRefeicao"
-import { Alimento } from "@/models/db-types/Alimento"
-import { Dispatch, SetStateAction } from 'react';
-import Link from "next/link";
+import { Dispatch, SetStateAction, useEffect } from "react"
 
 interface ChildProps {
     tipos: TipoRefeicao[],
-    alimentosFiltrados: Alimento[],
-    setPesquisaAtual: Dispatch<SetStateAction<string>>,
-    setShowAmount: Dispatch<SetStateAction<number>>,
-    showAmount: number
+    setShowModal: Dispatch<SetStateAction<boolean>>,
+    modal: string | undefined
 }
 
-export default function AddRefeicoes({tipos, alimentosFiltrados, setPesquisaAtual, setShowAmount, showAmount}: ChildProps) {
+export default function AddRefeicoes({tipos, setShowModal, modal}: ChildProps) {
+
+    useEffect(() => {
+        if (modal == 'show') {
+            setShowModal(true)
+        }
+    }, [modal])
+
     return(
         <form action="">
             <div>
@@ -35,27 +38,7 @@ export default function AddRefeicoes({tipos, alimentosFiltrados, setPesquisaAtua
                 <input type="text" name="" id="name-input" />
             </div>
 
-
-            <div>
-                <label htmlFor="alimentos-input">Selecionar Alimentos</label>
-                <input type="text" id="alimentos-input" onChange={(e) => {setPesquisaAtual(e.target.value)}}/>
-                <div>
-                    <Link href="/alimentos/">Adicionar novo Alimento</Link>
-
-                    {alimentosFiltrados.map(alimento => {
-                        return(
-                            <button key={alimento.id} value={alimento.id}>{alimento.name}</button>
-                            // <option key={alimento.id} value={alimento.id}>{alimento.name}</option>
-                        )
-                    })}
-
-                    <button type="button" onClick={() => setShowAmount(showAmount + 5)}>Carregar mais...</button>
-                </div>
-
-                <select name="">
-                    
-                </select>
-            </div>
+            <button type="button" onClick={() => setShowModal(true)}>Adicionar alimentos</button>
         </form>
     )
 }

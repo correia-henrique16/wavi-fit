@@ -1,23 +1,14 @@
-'use client'
+import AddRefeicaoClient from "@/components/refeicoes/AddRefeicaoClient"
 
-import AddRefeicoes from "@/components/refeicoes/AddRefeicoes"
-import useBuscarTipos from "@/hooks/refeicoes/useBuscarTipos"
-import useBuscarAlimentos from "@/hooks/alimentos/useBuscarAlimentos"
-import useAdicionarAlimento from "@/hooks/refeicoes/useAdicionarAlimento"
+interface ChildProps {
+    searchParams: Promise<{modal?: string}>
+}
 
-export default function AdicionarRefeicaoPage() {
+export default async function AdicionarRefeicaoPage({searchParams}: ChildProps) {
 
-    const {loadingTipo, tipos} = useBuscarTipos()
-    const {loadingAlimentos} = useBuscarAlimentos()
-    const {setPesquisaAtual, alimentosFiltrados, setShowAmount, showAmount} = useAdicionarAlimento()
-
-    if (loadingTipo || loadingAlimentos) return (<p> waitssss</p>)
+    const {modal} = await searchParams
 
     return(
-        <main>
-            <h1>Adicionarr refeições</h1>
-            <AddRefeicoes tipos={tipos} alimentosFiltrados={alimentosFiltrados} setPesquisaAtual={setPesquisaAtual} setShowAmount={setShowAmount} showAmount={showAmount}/>
-        </main>
-        
+        <AddRefeicaoClient modal={modal}/>
     )
 }
