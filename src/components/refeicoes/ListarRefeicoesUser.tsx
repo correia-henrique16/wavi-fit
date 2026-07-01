@@ -17,7 +17,7 @@ export default function ListarRefeicoesUser() {
                 <li key={refeicao.id}>
                     <h2>{refeicao.name}</h2>
                     
-                    {refeicao.alimentos.map((alimento: any) => (
+                    {refeicao.refeicao_alimentos.map((alimento: any) => (
                         <div key={alimento.id}>
                             <p>{alimento.alimentos.name}</p>
                             <p>{alimento.quantidade}g</p>
