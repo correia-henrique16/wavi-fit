@@ -8,7 +8,7 @@ export async function getRefeicoesUser() {
 
     const {data, error} = await supabase
     .from('refeicoes')
-    .select('*, tipo_refeicao(tipo), refeicao_alimentos(*, alimentos(*))')
+    .select('*, tipo_refeicao(*), refeicao_alimentos(*, alimentos(*))')
     .eq('user_id', user.id)
     .order('id', {ascending: true})
 

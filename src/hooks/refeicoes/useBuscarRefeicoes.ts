@@ -1,9 +1,10 @@
 'use client'
 
 import { useState, useEffect } from "react"
+import { Refeicao } from "@/models/db-types/Refeicao"
 
 export default function useBuscarRefeicoes() {
-    const [refeicoes, setRefeicoes] = useState<any[]>([])
+    const [refeicoes, setRefeicoes] = useState<Refeicao[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
 
