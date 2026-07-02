@@ -1,4 +1,5 @@
 import { AlimentoRefeicao } from "@/models/input/AlimentoRefeicao"
+import calculoMacrosRefeicao from "@/utils/calculoMacrosRefeicao"
 
 interface ChildProps {
     alimentosAdicionados: AlimentoRefeicao[]
@@ -8,6 +9,8 @@ export default function ListarAlimentosRefeicao({alimentosAdicionados}: ChildPro
     if(alimentosAdicionados.length < 1) {
         return null
     } else {
+        const {carbohydratesRefeicao, gorduraRefeicao, kcalRefeicao, proteinaRefeicao} = calculoMacrosRefeicao(alimentosAdicionados)
+
         return (
             <section className="flex flex-col gap-1.5 p-5">
                 {alimentosAdicionados.map(added => {
@@ -24,25 +27,13 @@ export default function ListarAlimentosRefeicao({alimentosAdicionados}: ChildPro
                 })}
 
                 <div>
-                    <p>{alimentosAdicionados.reduce((acumulador, itemAtual) => {
-                            return acumulador + (itemAtual.alimento?.kcal ?  itemAtual.alimento?.kcal * itemAtual.quantidade : 0)
-                        }, 0)} <span>kcal</span>
-                    </p>
+                    <p>{kcalRefeicao}<span>kcal</span></p>
 
-                    <p>{alimentosAdicionados.reduce((acumulador, itemAtual) => {
-                            return acumulador + (itemAtual.alimento?.carbohydrates ?  itemAtual.alimento?.carbohydrates * itemAtual.quantidade : 0)
-                        }, 0)}g <span>Hidratos</span>
-                    </p>
+                    <p>{carbohydratesRefeicao}g <span>Hidratos</span></p>
 
-                    <p>{alimentosAdicionados.reduce((acumulador, itemAtual) => {
-                            return acumulador + (itemAtual.alimento?.protein ?  itemAtual.alimento?.protein * itemAtual.quantidade : 0)
-                        }, 0)}g <span>Proteina</span>
-                    </p>
+                    <p>{proteinaRefeicao}g <span>Proteina</span></p>
 
-                    <p>{alimentosAdicionados.reduce((acumulador, itemAtual) => {
-                            return acumulador + (itemAtual.alimento?.fat ?  itemAtual.alimento?.fat * itemAtual.quantidade : 0)
-                        }, 0)}g <span>Gordura</span>
-                    </p>
+                    <p>{gorduraRefeicao}g <span>Gordura</span></p>
                 </div>
             </section>
         )

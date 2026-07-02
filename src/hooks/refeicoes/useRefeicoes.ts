@@ -39,7 +39,7 @@ export default function useRefeicoes() {
         }
 
         try {
-            const response = await fetch('/api/refeicoes', {
+            const response = await fetch(`/api/refeicoes`, {
                 method: 'POST',
                 body: JSON.stringify(validacao.data)
             })

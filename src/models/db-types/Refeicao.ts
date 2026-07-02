@@ -6,6 +6,6 @@ export type Refeicao = {
     name: string,
     user_id: string,
     tipo_refeicao: TipoRefeicao,
-    data_refeicao: Date,
+    data_refeicao: string,
     refeicao_alimentos: RefeicaoAlimento[]
 }

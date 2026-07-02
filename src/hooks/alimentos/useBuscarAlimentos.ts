@@ -9,7 +9,7 @@ export default function useBuscarAlimentos() {
         setLoading(true)
 
         try{
-            const request = await fetch('/api/alimentos')
+            const request = await fetch(`/api/alimentos`)
 
             const data = await request.json()
 
