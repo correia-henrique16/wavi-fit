@@ -1,11 +1,11 @@
 'use client'
 
-import AddRefeicoes from "@/components/refeicoes/AddRefeicoes"
+import AddRefeicoes from "@/components/refeicoes/adicionar/AddRefeicoes"
 import useBuscarTipos from "@/hooks/refeicoes/useBuscarTipos"
 import useBuscarAlimentos from "@/hooks/alimentos/useBuscarAlimentos"
 import useAdicionarAlimento from "@/hooks/refeicoes/useAdicionarAlimento"
 import ModalAdicionarAlimentos from "@/components/refeicoes/Modals/ModalAdicionarAlimentos"
-import ListarAlimentosRefeicao from "./ListarAlimentosRefeicao"
+import ListarAlimentosRefeicao from "../listar/ListarAlimentosRefeicao"
 
 export default function AddRefeicaoClient({modal} : {modal:string | undefined}) {
 

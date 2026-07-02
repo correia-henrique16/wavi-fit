@@ -2,6 +2,7 @@ import { createClient } from "../supabase/server";
 import { TypeRefeicao } from "@/models/input/Refeicao";
 import { getRequiredUser } from "../supabase/user";
 
+
 export async function getRefeicoesUser(dataParams: string | null) {
     const supabase = await createClient()
     const user = await getRequiredUser()
@@ -18,7 +19,29 @@ export async function getRefeicoesUser(dataParams: string | null) {
     .order('id', {ascending: true})
 
     if (error) {
-        console.error('Erro ao buscar os alimentos das refeições: ', error)
+        console.error('Erro ao buscar refeições: ', error)
+        return (error)
+    }
+
+    return data
+}
+
+export async function getRefeicaoId(idRefeicao: number | null) {
+    const supabase = await createClient()
+    const user = await getRequiredUser()
+
+    if (idRefeicao == null) {
+        return null
+    }
+
+    const {data, error} = await supabase
+    .from('refeicoes')
+    .select('*, tipo_refeicao(*), refeicao_alimentos(*, alimentos(*))')
+    .eq('user_id', user.id)
+    .eq('id', idRefeicao)
+
+    if (error) {
+        console.error('Erro ao buscar refeição: ', error)
         return (error)
     }
 

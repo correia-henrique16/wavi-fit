@@ -1,4 +1,4 @@
-import AddRefeicaoClient from "@/components/refeicoes/AddRefeicaoClient"
+import AddRefeicaoClient from "@/components/refeicoes/adicionar/AddRefeicaoClient"
 
 interface ChildProps {
     searchParams: Promise<{modal?: string}>

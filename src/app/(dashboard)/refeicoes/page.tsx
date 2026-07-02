@@ -1,7 +1,7 @@
 'use client'
 
-import ListarRefeicoesUser from "@/components/refeicoes/ListarRefeicoesUser"
-import ListarData from "@/components/refeicoes/ListarData"
+import ListarRefeicoesUser from "@/components/refeicoes/listar/ListarRefeicoesUser"
+import ListarData from "@/components/refeicoes/listar/ListarData"
 import useDataListar from "@/hooks/refeicoes/useDataListar"
 
 export default function RefeicoesPage() {
