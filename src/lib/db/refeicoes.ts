@@ -2,14 +2,19 @@ import { createClient } from "../supabase/server";
 import { TypeRefeicao } from "@/models/input/Refeicao";
 import { getRequiredUser } from "../supabase/user";
 
-export async function getRefeicoesUser() {
+export async function getRefeicoesUser(dataParams: string | null) {
     const supabase = await createClient()
     const user = await getRequiredUser()
+
+    if (dataParams == null) {
+        return null
+    }
 
     const {data, error} = await supabase
     .from('refeicoes')
     .select('*, tipo_refeicao(*), refeicao_alimentos(*, alimentos(*))')
     .eq('user_id', user.id)
+    .eq('data_refeicao', dataParams)
     .order('id', {ascending: true})
 
     if (error) {

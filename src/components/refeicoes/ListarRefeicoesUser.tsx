@@ -1,8 +1,10 @@
-'use client'
-
 import useBuscarRefeicoes from "@/hooks/refeicoes/useBuscarRefeicoes"
 
-export default function ListarRefeicoesUser() {
+interface ChildProps {
+    date: Date
+}
+
+export default function ListarRefeicoesUser({date}: ChildProps) {
 
     const {refeicoes, loading, error, carregarRefeicoes} = useBuscarRefeicoes()
 

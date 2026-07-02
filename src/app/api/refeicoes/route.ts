@@ -2,9 +2,12 @@ import { NextResponse } from "next/server";
 import { getRefeicoesUser, addRefeicao } from "@/lib/db/refeicoes";
 import { RefeicaoSchema } from "@/models/input/Refeicao";
 
-export async function GET() {
+export async function GET(request: Request) {
     try {
-        const dados = await getRefeicoesUser()
+        const { searchParams } = new URL(request.url)
+        const dataParams = searchParams.get('date')
+
+        const dados = await getRefeicoesUser(dataParams)
         return NextResponse.json(dados)
     } catch (error) {
         return NextResponse.json({error: 'Erro ao buscar refeições'}, {status: 500})
