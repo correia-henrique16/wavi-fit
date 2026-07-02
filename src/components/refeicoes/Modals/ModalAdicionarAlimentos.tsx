@@ -46,7 +46,7 @@ export default function ModalAdicionarAlimentos({alimentosFiltrados, setPesquisa
                     <input type="text" id="alimentos-input" onChange={(e) => {setPesquisaAtual(e.target.value)}}/>
 
                     <div className="flex flex-col gap-2">
-                        <Link href="/alimentos/">Criar novo Alimento</Link>
+                        <Link href={`/alimentos/?voltar=${pathname}`}>Criar novo Alimento</Link>
 
                         {alimentosFiltrados.map(alimento => {
                             return(

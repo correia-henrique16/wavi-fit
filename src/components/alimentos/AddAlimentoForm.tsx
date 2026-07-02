@@ -2,20 +2,26 @@
 
 import useAlimentos from "@/hooks/alimentos/useAlimentos"
 import Link from "next/link"
+import { useSearchParams } from "next/navigation"
 
 export default function AddAlimentoForm() {
 
     const { errors, loading, serverError, success, handleSubmit } = useAlimentos()
     
-        const listaErros = [
-            ...(errors?.email?._errors || []),
-            ...(errors?.password?._errors || []),
-            ...(serverError ? [serverError] : [])
-        ]
+    const listaErros = [
+        ...(errors?.email?._errors || []),
+        ...(errors?.password?._errors || []),
+        ...(serverError ? [serverError] : [])
+    ]
+
+    const searchParams = useSearchParams()
+    const voltar = searchParams.get('voltar')
+
+    const destino = voltar ?? '/refeicoes/adicionar'
 
     return(
         <main>
-            <Link href='/refeicoes/adicionar?modal=show'>Voltar</Link>
+            <Link href={`${destino}?modal=show`}>Voltar</Link>
 
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name-input">Nome</label>

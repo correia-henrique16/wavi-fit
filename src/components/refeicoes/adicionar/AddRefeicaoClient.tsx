@@ -10,7 +10,9 @@ import ListarAlimentosRefeicao from "../listar/ListarAlimentosRefeicao"
 export default function AddRefeicaoClient({modal} : {modal:string | undefined}) {
 
     const {loadingTipo, tipos} = useBuscarTipos()
+
     const {loadingAlimentos} = useBuscarAlimentos()
+    
     const {setPesquisaAtual, alimentosFiltrados, setShowAmount, showAmount, setShowModalAdd, showModalAdd,
         setShowModalQtd ,showModalQtd, alimentoSelecionado, setAlimentoSelecionado,
         setAlimentosAdicionados, alimentosAdicionados} = useAdicionarAlimento()

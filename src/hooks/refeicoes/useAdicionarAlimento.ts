@@ -3,7 +3,7 @@ import useBuscarAlimentos from "../alimentos/useBuscarAlimentos";
 import { Alimento } from "@/models/db-types/Alimento";
 import { AlimentoRefeicao } from "@/models/input/AlimentoRefeicao";
 
-export default function useAdicionarAlimento() {
+export default function useAdicionarAlimento(alimentosIniciais: AlimentoRefeicao[] = []) {
     const [pesquisaAtual, setPesquisaAtual] = useState('')
     const [showAmount, setShowAmount] = useState(5)
     const [showModalAdd, setShowModalAdd] = useState(false)
@@ -12,7 +12,7 @@ export default function useAdicionarAlimento() {
 
     const [quantidade, setQuantidade] = useState(1)
 
-    const [alimentosAdicionados, setAlimentosAdicionados] = useState<AlimentoRefeicao[]>([])
+    const [alimentosAdicionados, setAlimentosAdicionados] = useState<AlimentoRefeicao[]>(alimentosIniciais)
 
     const {alimentos} = useBuscarAlimentos()
 

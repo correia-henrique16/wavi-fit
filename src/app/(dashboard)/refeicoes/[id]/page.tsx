@@ -15,8 +15,6 @@ export default async function EditarRefeicaoPage({params}: ChildProps) {
                 Cookie: cookieStore.toString()
             }
         })
-
-        console.log(response.status)
         
         if (!response.ok) {
             const erro = await response.json()
