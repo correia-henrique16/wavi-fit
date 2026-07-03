@@ -1,7 +1,7 @@
 import useBuscarRefeicoes from "@/hooks/refeicoes/useBuscarRefeicoes"
 import { Refeicao } from "@/models/db-types/Refeicao"
 import { RefeicaoAlimento } from "@/models/db-types/RefeicaoAlimento"
-import calculoMacrosDia from "@/utils/calculoMacrosDia"
+import calculoMacrosDia from "@/utils/calculos/calculoMacrosDia"
 
 interface ChildProps {
     date: string

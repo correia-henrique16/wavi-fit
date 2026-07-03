@@ -7,6 +7,8 @@ import useBuscarAlimentos from "@/hooks/alimentos/useBuscarAlimentos"
 import useAdicionarAlimento from "@/hooks/refeicoes/useAdicionarAlimento"
 import ModalAdicionarAlimentos from "../Modals/ModalAdicionarAlimentos"
 import ListarAlimentosRefeicao from "../listar/ListarAlimentosRefeicao"
+import useApagarRefeicoes from "@/hooks/refeicoes/useApagarRefeicao"
+import ConfirmarApagarRefeicao from "../Modals/ConfirmarApagarRefeicao"
 
 export default function EditarRefeicaoClient({refeicao, modal}: {refeicao: Refeicao, modal: string | undefined}) {
     const {loadingTipo, tipos} = useBuscarTipos()
@@ -22,10 +24,14 @@ export default function EditarRefeicaoClient({refeicao, modal}: {refeicao: Refei
         setShowModalQtd ,showModalQtd, alimentoSelecionado, setAlimentoSelecionado,
         setAlimentosAdicionados, alimentosAdicionados} = useAdicionarAlimento(alimentosIniciais)
 
+    const {setShowConfirm, showConfirm} = useApagarRefeicoes()
+
     if (loadingTipo || loadingAlimentos) return (<p> waitssss</p>)
 
     return (
         <main>
+            <button onClick={() => setShowConfirm(true)}>Apagar Refeição</button>
+
             <EditRefeicoes tipos={tipos} setShowModal={setShowModalAdd} modal={modal} alimentosAdicionados={alimentosAdicionados}
                refeicao={refeicao} />
             
@@ -37,6 +43,9 @@ export default function EditarRefeicaoClient({refeicao, modal}: {refeicao: Refei
             /> 
 
             <ListarAlimentosRefeicao alimentosAdicionados={alimentosAdicionados}/>
+
+            {showConfirm && <ConfirmarApagarRefeicao setShowConfirm={setShowConfirm} idRefeicao={refeicao.id}/>}
+
         </main>
     )
 }

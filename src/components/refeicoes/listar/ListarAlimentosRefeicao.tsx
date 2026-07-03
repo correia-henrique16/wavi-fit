@@ -1,5 +1,5 @@
 import { AlimentoRefeicao } from "@/models/input/AlimentoRefeicao"
-import calculoMacrosRefeicao from "@/utils/calculoMacrosRefeicao"
+import calculoMacrosRefeicao from "@/utils/calculos/calculoMacrosRefeicao"
 
 interface ChildProps {
     alimentosAdicionados: AlimentoRefeicao[]
