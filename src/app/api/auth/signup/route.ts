@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { SignupSchema } from "@/models/User";
+import { SignupSchema } from "@/models/input/User";
 import { signUp } from "@/lib/auth/auth";
 
 export async function POST(request: Request) {

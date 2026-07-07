@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import {getAlimentos, addAlimento} from "@/lib/db/alimentos";
-import { AlimentoSchema } from "@/models/Alimento";
+import { AlimentoSchema } from "@/models/input/Alimento";
 
 export async function GET() {
     try {

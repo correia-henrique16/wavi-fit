@@ -1,13 +1,15 @@
 import { createClient } from "../supabase/server";
-import { TypeAlimento } from "@/models/Alimento";
+import { TypeAlimento } from "@/models/input/Alimento";
 import { getRequiredUser } from "../supabase/user";
 
 export async function getAlimentos() {
+    const user = await getRequiredUser()
     const supabase = await createClient()
 
     const {data, error} = await supabase
     .from('alimentos')
-    .select('*')
+    .select('id, name, kcal, protein, carbohydrates, fat, verified')
+    .or(`verified.eq.true, user_id.eq.${user.id}`)
     .order('name', {ascending: true})
 
     if (error) {

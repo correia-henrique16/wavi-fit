@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { RefeicaoSchema } from "@/models/input/Refeicao";
 import { AlimentoRefeicao } from "@/models/input/AlimentoRefeicao";
+import { Refeicao } from "@/models/db-types/Refeicao";
 
-export default function useRefeicoes() {
+export default function useEditarRefeicoes(refeicao: Refeicao) {
 
     const [formData, setFormData] = useState({
-        name: '',
-        tipo_refeicao: 1,
-        data_refeicao: ''
+        name: refeicao.name,
+        tipo_refeicao: refeicao.tipo_refeicao,
+        data_refeicao: refeicao.data_refeicao
     })
 
     const [success, setSuccess] = useState('')
@@ -15,7 +16,7 @@ export default function useRefeicoes() {
     const [serverError, setServerError] = useState('')
     const [loading, setLoading] = useState(false)
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>, alimentosRefeicao: AlimentoRefeicao[]) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>, alimentosRefeicao: AlimentoRefeicao[], idRefeicao: number) => {
         e.preventDefault()
         const form = e.currentTarget
         setLoading(true)
@@ -39,8 +40,8 @@ export default function useRefeicoes() {
         }
 
         try {
-            const response = await fetch(`/api/refeicoes`, {
-                method: 'POST',
+            const response = await fetch(`/api/refeicoes/${idRefeicao}`, {
+                method: 'PUT',
                 body: JSON.stringify(validacao.data)
             })
 
@@ -50,7 +51,7 @@ export default function useRefeicoes() {
                 form.reset();
                 setErrors({});
                 setServerError('');
-                setSuccess('Refeição adicionada!')
+                setSuccess('Refeição editada!')
             }
         } catch (error) {
             setServerError('Erro de ligação')

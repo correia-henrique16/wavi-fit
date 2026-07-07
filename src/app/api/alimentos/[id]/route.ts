@@ -1,5 +1,5 @@
 import { delAlimento, editAlimento } from "@/lib/db/alimentos"
-import { AlimentoSchema } from "@/models/Alimento";
+import { AlimentoSchema } from "@/models/input/Alimento";
 import { NextResponse } from "next/server"
 
 export async function DELETE(request: Request, {params}: {params: Promise<{id: string}>}) {

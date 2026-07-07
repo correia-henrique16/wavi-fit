@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { AlimentoSchema } from "@/models/Alimento";
+import { AlimentoSchema } from "@/models/input/Alimento";
 
 export default function useAlimentos() {
     const router = useRouter()

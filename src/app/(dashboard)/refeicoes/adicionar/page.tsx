@@ -1,6 +1,14 @@
-export default function AdicionarRefeicaoPage() {
+import AddRefeicaoClient from "@/components/refeicoes/adicionar/AddRefeicaoClient"
+
+interface ChildProps {
+    searchParams: Promise<{modal?: string}>
+}
+
+export default async function AdicionarRefeicaoPage({searchParams}: ChildProps) {
+
+    const {modal} = await searchParams
 
     return(
-        <h1>Adicioanr refeições</h1>
+        <AddRefeicaoClient modal={modal}/>
     )
 }

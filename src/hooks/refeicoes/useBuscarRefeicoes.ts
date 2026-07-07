@@ -1,9 +1,10 @@
 'use client'
 
 import { useState, useEffect } from "react"
+import { Refeicao } from "@/models/db-types/Refeicao"
 
-export default function useBuscarRefeicoes() {
-    const [refeicoes, setRefeicoes] = useState<any[]>([])
+export default function useBuscarRefeicoes(date: string) {
+    const [refeicoes, setRefeicoes] = useState<Refeicao[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
 
@@ -11,7 +12,7 @@ export default function useBuscarRefeicoes() {
     const carregarRefeicoes = async () => {
         try {
             setLoading(true)
-            const response = await fetch('/api/refeicoes')
+            const response = await fetch(`/api/refeicoes?date=${date}`)
             
             if (!response.ok) throw new Error('Erro ao ir buscar as refeições')
             
@@ -26,7 +27,7 @@ export default function useBuscarRefeicoes() {
 
     useEffect(() => {
         carregarRefeicoes()
-    }, [])
+    }, [date])
 
     return {
         refeicoes,

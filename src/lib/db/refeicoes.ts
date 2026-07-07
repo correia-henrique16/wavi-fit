@@ -1,47 +1,51 @@
 import { createClient } from "../supabase/server";
-import { TypeRefeicao } from "@/models/Refeicao";
+import { TypeRefeicao } from "@/models/input/Refeicao";
 import { getRequiredUser } from "../supabase/user";
 
-export async function getRefeicoesUser() {
+
+export async function getRefeicoesUser(dataParams: string | null) {
     const supabase = await createClient()
     const user = await getRequiredUser()
 
-    const {data: refeicoes, error: erroRefeicoes} = await supabase
-    .from('refeicoes')
-    .select('*, tipo_refeicao(tipo)')
-    .eq('user_id', user.id)
-    .order('name', {ascending: true})
-
-    if (erroRefeicoes) {
-        console.error('Erro ao buscar refeições: ', erroRefeicoes);
-        return (erroRefeicoes)
+    if (dataParams == null) {
+        return null
     }
 
-    if (!refeicoes || refeicoes.length === 0) return [];
-
-    const idsDasRefeicoes = refeicoes.map(r => r.id);
-
-    const {data: alimentosRefeicao, error: erroAlimentosRefeicao} = await supabase
-    .from('refeicao_alimentos')
-    .select('*, alimentos(*)')
-    .in('refeicao_id', idsDasRefeicoes)
+    const {data, error} = await supabase
+    .from('refeicoes')
+    .select('*, tipo_refeicao(*), refeicao_alimentos(*, alimentos(*))')
+    .eq('user_id', user.id)
+    .eq('data_refeicao', dataParams)
     .order('id', {ascending: true})
 
-    if (erroAlimentosRefeicao) {
-        console.error('Erro ao buscar os alimentos das refeições: ', erroAlimentosRefeicao)
-        return (erroAlimentosRefeicao)
+    if (error) {
+        console.error('Erro ao buscar refeições: ', error)
+        return (error)
     }
 
-    const refeicoesFinal = refeicoes.map(refeicao => {
-        return {
-            ...refeicao, 
-            alimentos: alimentosRefeicao.filter(alimento => alimento.refeicao_id == refeicao.id) 
-        }
-    }) 
+    return data
+}
 
-    console.log(refeicoesFinal)
+export async function getRefeicaoId(idRefeicao: number | null) {
+    const supabase = await createClient()
+    const user = await getRequiredUser()
 
-    return refeicoesFinal
+    if (idRefeicao == null) {
+        return null
+    }
+
+    const {data, error} = await supabase
+    .from('refeicoes')
+    .select('*, tipo_refeicao(*), refeicao_alimentos(*, alimentos(*))')
+    .eq('user_id', user.id)
+    .eq('id', idRefeicao)
+
+    if (error) {
+        console.error('Erro ao buscar refeição: ', error)
+        return (error)
+    }
+
+    return data
 }
 
 export async function addRefeicao(novaRefeicao: TypeRefeicao) {
