@@ -5,6 +5,10 @@
 }
 
 @layer base {
+  body {
+    @apply box-border
+  }
+
   h1 {
     @apply text-5xl font-bold text-gray-700 m-3
   }
@@ -19,6 +23,13 @@
     hover:bg-amber-100 transition-all duration-1000
   }
 
+  nav {
+    @apply absolute top-0 w-screen flex
+  }
+
+  .centered-flex {
+    @apply flex justify-center items-center
+  }
 
   .centrada {
     @apply flex justify-center items-center
