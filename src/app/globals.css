@@ -10,7 +10,7 @@
   }
 
   h1 {
-    @apply text-5xl font-bold text-gray-700 m-3
+    @apply text-4xl font-bold text-gray-700 m-3
   }
 
   input {
@@ -24,7 +24,11 @@
   }
 
   nav {
-    @apply absolute top-0 w-screen flex py-1 px-4 justify-center box-border
+    @apply absolute top-0 w-screen flex py-1 px-2 justify-center box-border
+  }
+
+  .div-nav {
+    @apply flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black
   }
 
   .centered-flex {

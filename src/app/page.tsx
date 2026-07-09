@@ -4,7 +4,7 @@ import RefeicoesBtn from "@/components/inicial/RefeicoesBtn";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+    <div className="div-nav">
       <nav className="bg-amber-500">
         <div className="w-1/3 flex justify-baseline items-center">
           <ProfileBtn />
