@@ -24,7 +24,7 @@
   }
 
   nav {
-    @apply absolute top-0 w-screen flex
+    @apply absolute top-0 w-screen flex py-1 px-4 justify-center box-border
   }
 
   .centered-flex {
