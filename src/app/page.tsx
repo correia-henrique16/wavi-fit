@@ -1,3 +1,4 @@
+import CaloriasDiarias from "@/components/inicial/CaloriasDiarias";
 import ProfileBtn from "@/components/inicial/ProfileBtn";
 
 export default function Home() {
@@ -6,6 +7,10 @@ export default function Home() {
       <nav className="bg-amber-500 p-2 px-10">
         <ProfileBtn />
       </nav>
+
+      <main>
+        <CaloriasDiarias />
+      </main>
     </div>
   );
 }
