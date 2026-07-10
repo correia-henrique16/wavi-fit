@@ -7,8 +7,8 @@ interface ChildProps {
 
 export default function ListarData({date, setDate}: ChildProps) {
     return (
-        <div>
+        <section>
             <input type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
-        </div>
+        </section>
     )
 }

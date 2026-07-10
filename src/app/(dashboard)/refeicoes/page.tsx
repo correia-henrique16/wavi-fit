@@ -4,14 +4,26 @@ import ListarRefeicoesUser from "@/components/refeicoes/listar/ListarRefeicoesUs
 import ListarData from "@/components/refeicoes/listar/ListarData"
 import useDataListar from "@/hooks/refeicoes/useDataListar"
 import BtnVoltar from "@/components/refeicoes/ui/BtnVoltar"
+import useBuscarRefeicoes from "@/hooks/refeicoes/useBuscarRefeicoes"
+import calculoMacrosDia from "@/utils/calculos/calculoMacrosDia"
+import MacrosDiarias from "@/components/refeicoes/listar/MacrosDiarias"
+import useBuscarTipos from "@/hooks/refeicoes/useBuscarTipos"
+
 
 export default function RefeicoesPage() {
 
     const {date, setDate} = useDataListar()
+    const {refeicoes, loading} = useBuscarRefeicoes(date)
+    const {proteinaDia, carbohydratesDia, fatDia, kcalDia} = calculoMacrosDia(refeicoes)
+    const {loadingTipo, tipos} = useBuscarTipos()
+
+    if (loading || loadingTipo) {
+        return <p>A carregar...</p>
+    }
 
     return (
         
-        <div className="div-nav">
+        <div className="">
             <nav>
                 <div className="w-1/3 flex justify-baseline items-center">
                     <BtnVoltar />
@@ -25,9 +37,15 @@ export default function RefeicoesPage() {
 
                 </div>
             </nav>
-            <h1>Refeicoes</h1>
-            <ListarData setDate={setDate} date={date}/>
-            <ListarRefeicoesUser date={date}/>
+
+            <main>
+                <ListarData setDate={setDate} date={date}/>
+
+                <ListarRefeicoesUser refeicoes={refeicoes} tipos={tipos}/>
+
+                <MacrosDiarias proteinaDia={proteinaDia} carbohydratesDia={carbohydratesDia} fatDia={fatDia} kcalDia={kcalDia} />
+            </main>
+            
         </div>
     )
 }
