@@ -8,6 +8,7 @@ import useBuscarRefeicoes from "@/hooks/refeicoes/useBuscarRefeicoes"
 import calculoMacrosDia from "@/utils/calculos/calculoMacrosDia"
 import MacrosDiarias from "@/components/refeicoes/listar/MacrosDiarias"
 import useBuscarTipos from "@/hooks/refeicoes/useBuscarTipos"
+import BtnAdicionarRefeicao from "@/components/refeicoes/listar/BtnAdicionarRefeicao"
 
 
 export default function RefeicoesPage() {
@@ -35,11 +36,13 @@ export default function RefeicoesPage() {
             </nav>
 
             <main className="main-nav">
-                <ListarData setDate={setDate} date={date}/>
+                <ListarData setDate={setDate} date={date} />
 
                 <ListarRefeicoesUser refeicoes={refeicoes} tipos={tipos} loading={loading} loadingTipo={loadingTipo} />
 
                 <MacrosDiarias proteinaDia={proteinaDia} carbohydratesDia={carbohydratesDia} fatDia={fatDia} kcalDia={kcalDia} />
+            
+                <BtnAdicionarRefeicao />
             </main>
             
         </div>
