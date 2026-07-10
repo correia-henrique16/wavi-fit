@@ -4,13 +4,13 @@ import RefeicoesBtn from "@/components/inicial/RefeicoesBtn";
 
 export default function Home() {
   return (
-    <div className="div-nav">
+    <div className="full-centered-flex h-screen">
       <nav className="bg-amber-500">
         <div className="w-1/3 flex justify-baseline items-center">
           <ProfileBtn />
         </div>
 
-        <div className="w-1/3 centered-flex">
+        <div className="w-1/3 full-centered-flex">
           <h1>WAVI</h1>
         </div>
 

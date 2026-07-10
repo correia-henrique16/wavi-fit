@@ -24,18 +24,22 @@
   }
 
   nav {
-    @apply absolute top-0 w-screen flex py-1 px-2 justify-center box-border
+    @apply absolute top-0 w-screen flex py-1 px-2 justify-center box-border h-17
   }
 
-  .div-nav {
-    @apply flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black
+  .main-nav {
+    @apply mt-20
+  }
+
+  .full-centered-flex {
+    @apply flex justify-center items-center bg-zinc-50
+  }
+
+  .centered-col {
+    @apply flex flex-col items-center 
   }
 
   .centered-flex {
-    @apply flex justify-center items-center
-  }
-
-  .centrada {
     @apply flex justify-center items-center
   }
 }

@@ -17,10 +17,6 @@ export default function RefeicoesPage() {
     const {proteinaDia, carbohydratesDia, fatDia, kcalDia} = calculoMacrosDia(refeicoes)
     const {loadingTipo, tipos} = useBuscarTipos()
 
-    if (loading || loadingTipo) {
-        return <p>A carregar...</p>
-    }
-
     return (
         
         <div className="">
@@ -29,7 +25,7 @@ export default function RefeicoesPage() {
                     <BtnVoltar />
                 </div>
 
-                <div className="w-1/3 flex centered-flex">
+                <div className="w-1/3 flex full-centered-flex">
                     <h1>Refeições</h1>
                 </div>
 
@@ -38,10 +34,10 @@ export default function RefeicoesPage() {
                 </div>
             </nav>
 
-            <main>
+            <main className="main-nav">
                 <ListarData setDate={setDate} date={date}/>
 
-                <ListarRefeicoesUser refeicoes={refeicoes} tipos={tipos}/>
+                <ListarRefeicoesUser refeicoes={refeicoes} tipos={tipos} loading={loading} loadingTipo={loadingTipo} />
 
                 <MacrosDiarias proteinaDia={proteinaDia} carbohydratesDia={carbohydratesDia} fatDia={fatDia} kcalDia={kcalDia} />
             </main>
