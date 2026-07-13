@@ -9,6 +9,7 @@ import calculoMacrosDia from "@/utils/calculos/calculoMacrosDia"
 import MacrosDiarias from "@/components/refeicoes/listar/MacrosDiarias"
 import useBuscarTipos from "@/hooks/refeicoes/useBuscarTipos"
 import BtnAdicionarRefeicao from "@/components/refeicoes/listar/BtnAdicionarRefeicao"
+import datasDias from "@/utils/datas/datasDias"
 
 
 export default function RefeicoesPage() {
@@ -17,6 +18,8 @@ export default function RefeicoesPage() {
     const {refeicoes, loading} = useBuscarRefeicoes(date)
     const {proteinaDia, carbohydratesDia, fatDia, kcalDia} = calculoMacrosDia(refeicoes)
     const {loadingTipo, tipos} = useBuscarTipos()
+
+    const {anteriorDataString, dataSelecionada, proximaDataString, getLabel} = datasDias(date)  
 
     return (
         
@@ -36,13 +39,15 @@ export default function RefeicoesPage() {
             </nav>
 
             <main className="main-nav">
-                <ListarData setDate={setDate} date={date} />
+                <ListarData setDate={setDate} anteriorDataString={anteriorDataString} dataSelecionada={dataSelecionada} 
+                    proximaDataString={proximaDataString} getLabel={getLabel}
+                />
 
                 <ListarRefeicoesUser refeicoes={refeicoes} tipos={tipos} loading={loading} loadingTipo={loadingTipo} />
 
                 <MacrosDiarias proteinaDia={proteinaDia} carbohydratesDia={carbohydratesDia} fatDia={fatDia} kcalDia={kcalDia} />
             
-                <BtnAdicionarRefeicao />
+                <BtnAdicionarRefeicao dataSelecionada={dataSelecionada}/>
             </main>
             
         </div>

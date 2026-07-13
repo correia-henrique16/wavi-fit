@@ -1,7 +1,8 @@
 import { TipoRefeicao } from "@/models/db-types/TipoRefeicao"
-import { Dispatch, SetStateAction, useEffect } from "react"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
 import useRefeicoes from "@/hooks/refeicoes/useRefeicoes"
 import { AlimentoRefeicao } from "@/models/input/AlimentoRefeicao"
+import MostrarCalendario from "@/components/calendario/MostrarCalendario"
 
 interface ChildProps {
     tipos: TipoRefeicao[],
@@ -14,6 +15,16 @@ export default function AddRefeicoes({tipos, setShowModal, modal, alimentosAdici
 
     const {errors, handleSubmit, serverError, success, loading} = useRefeicoes()
 
+    const [dataSelecionada, setDataSelecionada] = useState<Date | undefined>(new Date())
+    const [mostrarCalendario, setMostrarCalendario] = useState(false)
+
+    useEffect(() => {
+        const dataGuardada = sessionStorage.getItem('data_selecionada')
+        if (dataGuardada) {
+            setDataSelecionada(new Date(dataGuardada))
+        }
+    }, [])
+
     useEffect(() => {
         if (modal == 'show') {
             setShowModal(true)
@@ -25,6 +36,13 @@ export default function AddRefeicoes({tipos, setShowModal, modal, alimentosAdici
         ...(errors?.password?._errors || []),
         ...(serverError ? [serverError] : [])
     ]
+
+    const handleMudarData = (dia: Date | undefined) => {
+        if (dia) {
+            setDataSelecionada(dia)
+            setMostrarCalendario(false)
+        }
+    }
 
     return(
         <form onSubmit={e => handleSubmit(e, alimentosAdicionados)}>
@@ -44,6 +62,8 @@ export default function AddRefeicoes({tipos, setShowModal, modal, alimentosAdici
                 )}
             </div>
 
+            <MostrarCalendario setMostrarCalendario={setMostrarCalendario} mostrarCalendario={mostrarCalendario} dataSelecionada={dataSelecionada} handleMudarData={handleMudarData} />
+
             <div>
                 <label htmlFor="tipo-select"></label>
                 <select name="tipo_refeicao" id="tipo-select" required>
@@ -53,11 +73,6 @@ export default function AddRefeicoes({tipos, setShowModal, modal, alimentosAdici
                         )
                     })}
                 </select>
-            </div>
-
-            <div>
-                <label htmlFor="date-input">Data</label>
-                <input type="date" id="date-input" name="data_refeicao" required/>
             </div>
 
             <div>
