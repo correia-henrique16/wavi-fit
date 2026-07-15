@@ -33,7 +33,7 @@ export default function MostrarCalendario({setMostrarCalendario, mostrarCalendar
                     <DayPicker 
                         mode="single"
                         selected={dataSelecionada}
-                        onSelect={handleMudarData}
+                        onDayClick={handleMudarData}
                     />
                 </div>
             )}

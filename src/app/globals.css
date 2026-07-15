@@ -43,4 +43,31 @@
   .centered-flex {
     @apply flex justify-center items-center
   }
+
+
+  
+  .rdp-nav {
+    max-width: 100%;
+    pointer-events: none;
+  }
+
+  .rdp-month_caption, .rdp-caption {
+    display: flex ;
+    justify-content: center ;
+    align-items: center ;
+  }
+
+  .rdp-button_previous {
+    position: absolute !important;
+    left: 0px ;
+    top: 50% ;
+    transform: translateY(-50%) ;
+  }
+  
+  .rdp-button_next {
+    position: absolute !important;
+    right: 0px ;
+    top: 50% ;
+    transform: translateY(-50%);
+  }
 }
