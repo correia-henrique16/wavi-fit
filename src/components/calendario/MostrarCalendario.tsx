@@ -27,7 +27,9 @@ export default function MostrarCalendario({setMostrarCalendario, mostrarCalendar
             </button>
 
             {mostrarCalendario && (
-                <div className="absolute z-50 mt-2 p-4 bg-white border border-gray-200 shadow-xl rounded-2xl left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0">
+                <div className="absolute z-50 mt-2 p-4 bg-white border border-gray-200 shadow-xl rounded-2xl left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0"
+                    onClick={(e) => e.stopPropagation()}
+                >
                     <DayPicker 
                         mode="single"
                         selected={dataSelecionada}

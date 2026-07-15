@@ -45,7 +45,7 @@ export default function AddRefeicoes({tipos, setShowModal, modal, alimentosAdici
     }
 
     return(
-        <form onSubmit={e => handleSubmit(e, alimentosAdicionados)}>
+        <form onSubmit={e => handleSubmit(e, alimentosAdicionados)} className="h-screen" onClick={() => mostrarCalendario && setMostrarCalendario(false)} >
             <button type="submit">{loading ? 'A submeter' : 'Submeter'}</button>
 
             <div> 
@@ -81,6 +81,7 @@ export default function AddRefeicoes({tipos, setShowModal, modal, alimentosAdici
             </div>
 
             <button type="button" onClick={() => setShowModal(true)}>Adicionar alimentos</button>
+            
         </form>
     )
 }
