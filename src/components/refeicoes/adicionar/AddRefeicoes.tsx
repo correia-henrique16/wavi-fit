@@ -50,9 +50,9 @@ export default function AddRefeicoes({tipos, setShowModal, modal, alimentosAdici
 
             <div> 
                 {listaErros.length > 0 && (
-                <p className="text-red-500 text-sm font-medium">
-                    {listaErros[0]}
-                </p>
+                    <p className="text-red-500 text-sm font-medium">
+                        {listaErros[0]}
+                    </p>
                 )}
 
                 {success != '' && (

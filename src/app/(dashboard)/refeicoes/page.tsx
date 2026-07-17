@@ -26,7 +26,7 @@ export default function RefeicoesPage() {
         <div className="">
             <nav>
                 <div className="w-1/3 flex justify-baseline items-center">
-                    <BtnVoltar />
+                    <BtnVoltar caminho='/' />
                 </div>
 
                 <div className="w-1/3 flex full-centered-flex">
