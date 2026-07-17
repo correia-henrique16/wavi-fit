@@ -14,9 +14,11 @@ export default function CaloriasDiarias() {
         return <p>A calcular...</p>
     } else {
         return(
-            <div>
-                <h2>Calorias Diárias</h2>
-                <p>{kcalDia}</p>
+            <div className="bg-white/40 backdrop-blur-md rounded-3xl p-6 border border-castanho/10 shadow-sm text-center mt-6
+                aspect-square flex flex-col justify-center"
+            >
+                <h2 className="text-sm font-semibold tracking-wider text-castanho uppercase mb-2">Calorias Diárias</h2>
+                <p className="text-5xl font-black text-bordeaux tracking-tight">{kcalDia}</p>
             </div>
         )
     }
