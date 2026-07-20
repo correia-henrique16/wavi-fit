@@ -10,6 +10,7 @@ import MacrosDiarias from "@/components/refeicoes/listar/MacrosDiarias"
 import useBuscarTipos from "@/hooks/refeicoes/useBuscarTipos"
 import BtnAdicionarRefeicao from "@/components/refeicoes/listar/BtnAdicionarRefeicao"
 import datasDias from "@/utils/datas/datasDias"
+import { useState } from "react"
 
 
 export default function RefeicoesPage() {
@@ -18,6 +19,8 @@ export default function RefeicoesPage() {
     const {refeicoes, loading} = useBuscarRefeicoes(date)
     const {proteinaDia, carbohydratesDia, fatDia, kcalDia} = calculoMacrosDia(refeicoes)
     const {loadingTipo, tipos} = useBuscarTipos()
+
+    const [refeicaoAberta, setRefeicaoAberta] = useState<number[]>([])
 
     const {anteriorDataString, dataSelecionada, proximaDataString, getLabel} = datasDias(date)  
 
@@ -43,7 +46,7 @@ export default function RefeicoesPage() {
                     proximaDataString={proximaDataString} getLabel={getLabel}
                 />
 
-                <ListarRefeicoesUser refeicoes={refeicoes} tipos={tipos} loading={loading} loadingTipo={loadingTipo} />
+                <ListarRefeicoesUser refeicoes={refeicoes} tipos={tipos} loading={loading} loadingTipo={loadingTipo} refeicaoAberta={refeicaoAberta} setRefeicaoAberta={setRefeicaoAberta} />
 
                 <MacrosDiarias proteinaDia={proteinaDia} carbohydratesDia={carbohydratesDia} fatDia={fatDia} kcalDia={kcalDia} />
             

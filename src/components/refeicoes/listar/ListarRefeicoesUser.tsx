@@ -2,23 +2,36 @@ import { Refeicao } from "@/models/db-types/Refeicao"
 import { TipoRefeicao } from "@/models/db-types/TipoRefeicao"
 import calculoMacrosDia from "@/utils/calculos/calculoMacrosDia"
 import calculoMacrosRefeicao from "@/utils/calculos/calculoMacrosRefeicao"
+import {Dispatch, SetStateAction} from "react"
 import Link from "next/link"
 
 interface ChildProps {
     refeicoes: Refeicao[],
     tipos: TipoRefeicao[],
     loading: boolean,
-    loadingTipo: boolean
+    loadingTipo: boolean,
+    refeicaoAberta: number[],
+    setRefeicaoAberta: Dispatch<SetStateAction<number[]>>
 }
 
-export default function ListarRefeicoesUser({refeicoes, tipos, loading, loadingTipo}: ChildProps) {
+export default function ListarRefeicoesUser({refeicoes, tipos, loading, loadingTipo, refeicaoAberta, setRefeicaoAberta}: ChildProps) {
+
+    const handleClickTipo = (tipo_id: number) => {
+        if (refeicaoAberta.includes(tipo_id)) {
+            const listaAtualizada = refeicaoAberta.filter((item) => item != tipo_id)
+            setRefeicaoAberta(listaAtualizada)
+        } else {
+            const listaAtualizada = [...refeicaoAberta, tipo_id]
+            setRefeicaoAberta(listaAtualizada)
+        }
+    }
 
     if (loading || loadingTipo) {
         return(
             <p>A carregar...</p>
         )
     }
-    
+
     return(
         <section className="centered-col gap-3">
             {tipos.map((tipo: TipoRefeicao) => {
@@ -26,16 +39,18 @@ export default function ListarRefeicoesUser({refeicoes, tipos, loading, loadingT
                 const macrosDoTipo = calculoMacrosDia(refeicoesDoTipo)
 
                 return(
-                    <div key={tipo.id} className="bg-rosa pt-3 text-center w-full rounded-t-xl border-t border-x border-bordeaux">
+                    <div key={tipo.id} className="bg-rosa pt-3 text-center w-full rounded-t-xl border border-bordeaux"
+                        onClick={() => handleClickTipo(tipo.id)}
+                    >
                         <div>
                             <h2 className="text-bordeaux font-bold text-lg">{tipo.tipo}</h2>
                             <p className="text-bordeaux/80 text-lg font-semibold">{macrosDoTipo.kcalDia}</p>
                         </div>
-                        
 
+                        
                         <ul className=" bg-rosa-escuro mt-3">
-                            {refeicoesDoTipo
-                                .map((refeicao: Refeicao) => {
+                            {refeicaoAberta.includes(tipo.id) && 
+                                refeicoesDoTipo.map((refeicao: Refeicao) => {
                                     const alimentosConvertidos = refeicao.refeicao_alimentos.map(item => ({
                                         alimento: item.alimentos,
                                         quantidade: item.quantidade
@@ -50,8 +65,11 @@ export default function ListarRefeicoesUser({refeicoes, tipos, loading, loadingT
                                             </Link>
                                         </li>
                                     )          
-                                })}
+                                })
+                            }
                         </ul>
+
+                        
                     </div>
                 )
             })}
