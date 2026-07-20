@@ -26,14 +26,14 @@ export default function ListarRefeicoesUser({refeicoes, tipos, loading, loadingT
                 const macrosDoTipo = calculoMacrosDia(refeicoesDoTipo)
 
                 return(
-                    <div key={tipo.id} className="border bg-amber-300 w-full text-center">
+                    <div key={tipo.id} className="bg-rosa pt-3 text-center w-full rounded-t-xl border-t border-x border-bordeaux">
                         <div>
-                            <h2>{tipo.tipo}</h2>
-                            <p>{macrosDoTipo.kcalDia}</p>
+                            <h2 className="text-bordeaux font-bold text-lg">{tipo.tipo}</h2>
+                            <p className="text-bordeaux/80 text-lg font-semibold">{macrosDoTipo.kcalDia}</p>
                         </div>
                         
 
-                        <ul className="border bg-amber-400">
+                        <ul className=" bg-rosa-escuro mt-3">
                             {refeicoesDoTipo
                                 .map((refeicao: Refeicao) => {
                                     const alimentosConvertidos = refeicao.refeicao_alimentos.map(item => ({
@@ -43,10 +43,10 @@ export default function ListarRefeicoesUser({refeicoes, tipos, loading, loadingT
                                     const macrosRefeicao = calculoMacrosRefeicao(alimentosConvertidos)
 
                                     return(
-                                        <li key={refeicao.id}>
-                                            <Link href={`/refeicoes/${refeicao.id}`}>
-                                                <h2>{refeicao.name}</h2>
-                                                <span>{macrosRefeicao.kcalRefeicao}kcal</span>
+                                        <li key={refeicao.id} className="border-b border-bordeaux/50 last:border-b-0">
+                                            <Link href={`/refeicoes/${refeicao.id}`} className="p-1 flex flex-col gap-1 items-center justify-center">
+                                                <h2 className="text-bordeaux font-bold text-lg">{refeicao.name}</h2>
+                                                <span className="text-base font-semibold text-bordeaux/90">{macrosRefeicao.kcalRefeicao}kcal</span>
                                             </Link>
                                         </li>
                                     )          
