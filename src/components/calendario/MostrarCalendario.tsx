@@ -13,22 +13,22 @@ export default function MostrarCalendario({setMostrarCalendario, mostrarCalendar
     
     return(
         <div className="flex flex-col gap-2 my-4">
-            <label className="text-sm font-medium text-gray-600">Data da Refeição</label>
+            <label className="text-bordeaux font-bold">Data da Refeição</label>
             
 
             <button 
                 type="button"
                 onClick={() => setMostrarCalendario(!mostrarCalendario)}
-                className=""
+                className="p-3! w-full bg-white border border-bordeaux/30 rounded-xl text-center active:scale-[0.99] transition-all flex justify-center items-center"
             >
-                <span className="font-semibold text-gray-800">
+                <span className="text-bordeaux font-bold text-base">
                     {dataSelecionada ? format(dataSelecionada, "dd/MM/yyyy") : "Selecionar data"}
                 </span>
             </button>
 
             {mostrarCalendario && (
-                <div className="absolute z-50 mt-2 p-4 bg-white border border-gray-200 shadow-xl rounded-2xl left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0"
-                    onClick={(e) => e.stopPropagation()}
+                <div className="absolute z-50 mt-2 bg-white border-2 border-bordeaux/20 shadow-xl rounded-2xl p-4 text-bordeaux left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0"
+                onClick={(e) => e.stopPropagation()}
                 >
                     <DayPicker 
                         mode="single"
