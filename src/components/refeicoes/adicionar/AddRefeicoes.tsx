@@ -72,7 +72,7 @@ export default function AddRefeicoes({tipos, setShowModal, modal, alimentosAdici
             </div>
 
             <div>
-                <label htmlFor="name-input">Nome</label>
+                <label htmlFor="name-input" className="text-base text-bordeaux font-bold">Nome</label>
                 <input type="text" name="name" id="name-input" required className="w-full p-3 rounded-xl bg-white border border-bordeaux/30 text-bordeaux font-medium focus:outline-none m-0!"/>
             </div>
 
