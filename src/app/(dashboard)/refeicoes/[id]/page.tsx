@@ -2,11 +2,13 @@ import EditarRefeicaoClient from "@/components/refeicoes/editar/EditarRefeicaoCl
 import { cookies } from "next/headers"
 
 interface ChildProps {
-    params: Promise<{id?: string}>
+    params: Promise<{id?: string}>,
+    searchParams: Promise<{modal?: string}>
 }
 
-export default async function EditarRefeicaoPage({params}: ChildProps) {
+export default async function EditarRefeicaoPage({params, searchParams}: ChildProps) {
     const {id} = await params
+    const {modal} = await searchParams
     const cookieStore = await cookies()
     
     try {
@@ -25,7 +27,7 @@ export default async function EditarRefeicaoPage({params}: ChildProps) {
         const dados = await response.json()
 
         return (
-            <EditarRefeicaoClient refeicao={dados[0]}/>
+            <EditarRefeicaoClient refeicao={dados[0]} modal={modal}/>
         )
     } catch (error: any) {
         console.error(error)
