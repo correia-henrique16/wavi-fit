@@ -1,8 +1,9 @@
 import { TipoRefeicao } from "@/models/db-types/TipoRefeicao"
-import { Dispatch, SetStateAction, useEffect } from "react"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
 import { AlimentoRefeicao } from "@/models/input/AlimentoRefeicao"
 import { Refeicao } from "@/models/db-types/Refeicao"
 import useEditarRefeicoes from "@/hooks/refeicoes/useEditarRefeicoes"
+import MostrarCalendario from "@/components/calendario/MostrarCalendario"
 
 interface ChildProps {
     tipos: TipoRefeicao[],
@@ -21,6 +22,19 @@ export default function EditRefeicoes({tipos, setShowModal, modal, alimentosAdic
             setShowModal(true)
         }
     }, [modal])
+
+    const [mostrarCalendario, setMostrarCalendario] = useState<boolean>(false)
+
+    const [dataSelecionada, setDataSelecionada] = useState<Date | undefined>(
+        formData.data_refeicao ? new Date(`${formData.data_refeicao}T00:00:00`) : new Date()
+    )
+
+    const handleMudarData = (dia: Date | undefined) => {
+        if (dia) {
+            setDataSelecionada(dia)
+            setMostrarCalendario(false)
+        }
+    }
 
     const listaErros = [
         ...(errors?.email?._errors || []),
@@ -57,13 +71,7 @@ export default function EditRefeicoes({tipos, setShowModal, modal, alimentosAdic
                 </select>
             </div>
 
-            <div className="flex flex-col gap-1">
-                <label htmlFor="date-input" className="text-xs font-bold text-castanho uppercase tracking-wider">
-                    Data
-                </label>
-                <input className="w-full p-3 rounded-xl text-bordeaux font-bold" 
-                type="date" id="date-input" name="data_refeicao" defaultValue={formData.data_refeicao} required/>
-            </div>
+            <MostrarCalendario setMostrarCalendario={setMostrarCalendario} mostrarCalendario={mostrarCalendario} dataSelecionada={dataSelecionada} handleMudarData={handleMudarData} />
 
             <div className="flex flex-col gap-1">
                 <label htmlFor="name-input" className="text-xs font-bold text-castanho uppercase tracking-wider">
