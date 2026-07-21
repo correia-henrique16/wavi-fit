@@ -1,6 +1,6 @@
 @import "react-day-picker/dist/style.css";
 
-/* 1. Root & Variáveis de Cor */
+/* Root & Variáveis de Cor */
 .rdp-root,
 .rdp {
   --rdp-accent-color: var(--color-bordeaux) !important;
@@ -14,14 +14,14 @@
   width: 100% !important;
 }
 
-/* 2. Reset de Botões Internos */
+/* Reset de Botões Internos */
 .rdp-root button {
   background: transparent !important;
   box-shadow: none !important;
   outline: none !important;
 }
 
-/* 3. Cabeçalho do Mês e Ano */
+/* Cabeçalho do Mês e Ano */
 .rdp-month_caption,
 .rdp-caption {
   display: flex !important;
@@ -38,7 +38,7 @@
   font-weight: 700 !important;
 }
 
-/* 4. Setas de Navegação (Separadas nas pontas) */
+/* Setas de Navegação (Separadas nas pontas) */
 .rdp-nav {
   position: absolute !important;
   top: 0 !important;
@@ -71,7 +71,7 @@
   stroke: var(--color-bordeaux) !important;
 }
 
-/* 5. Dia Selecionado */
+/* Dia Selecionado */
 .rdp-selected,
 .rdp-day_selected,
 .rdp-button[aria-selected="true"] {
@@ -82,7 +82,7 @@
   border: none !important;
 }
 
-/* 6. Dia de Hoje */
+/* Dia de Hoje */
 .rdp-today,
 .rdp-day_today {
   color: var(--color-rosa) !important;
