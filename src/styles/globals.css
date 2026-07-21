@@ -37,7 +37,7 @@
   }
 
   .full-centered-flex {
-    @apply flex justify-center items-center bg-bg;
+    @apply flex justify-center items-center;
   }
 
   .centered-col {

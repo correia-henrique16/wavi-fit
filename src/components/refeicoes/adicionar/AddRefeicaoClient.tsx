@@ -40,7 +40,7 @@ export default function AddRefeicaoClient({modal} : {modal:string | undefined}) 
                 </div>
 
                 <div className="w-1/3 flex full-centered-flex">
-                    <h1>Adicinar</h1>
+                    <h1>Adicionar</h1>
                 </div>
 
                 <div className="w-1/3 flex justify-end items-center ">
