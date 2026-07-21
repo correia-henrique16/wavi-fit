@@ -48,7 +48,7 @@ export default function ListarRefeicoesUser({refeicoes, tipos, loading, loadingT
                         </div>
 
                         
-                        <ul className=" bg-rosa-escuro mt-3">
+                        <ul className=" bg-rosa-claro mt-3">
                             {refeicaoAberta.includes(tipo.id) && 
                                 refeicoesDoTipo.map((refeicao: Refeicao) => {
                                     const alimentosConvertidos = refeicao.refeicao_alimentos.map(item => ({

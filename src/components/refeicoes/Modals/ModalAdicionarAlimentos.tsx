@@ -36,7 +36,7 @@ export default function ModalAdicionarAlimentos({alimentosFiltrados, setPesquisa
             <section className="fixed inset-0 z-50 overflow-y-auto bg-bg p-4 flex justify-center">
                 <div className="w-full max-w-md flex flex-col gap-4">
                     <button type="button" 
-                        className="bg-transparent!"
+                        className="bg-transparent! self-baseline text-bordeaux text-base font-semibold"
                         onClick={() => {
                             setShowModalAdd(false)
                             router.replace(pathname)
@@ -68,7 +68,7 @@ export default function ModalAdicionarAlimentos({alimentosFiltrados, setPesquisa
                         {alimentosFiltrados.map(alimento => {
                             return(
                                 <button key={alimento.id} value={alimento.id}
-                                    className="w-full p-3.5 bg-rosa! text-bordeaux font-bold border border-bordeaux hover:bg-rosa-escuro! hover:text-white"
+                                    className="w-full p-3.5 bg-rosa! text-bordeaux font-bold border border-bordeaux hover:bg-rosa-claro! hover:text-white"
                                     onClick={() => {
                                         setAlimentoSelecionado(alimento)
                                         setShowModalQtd(true)
