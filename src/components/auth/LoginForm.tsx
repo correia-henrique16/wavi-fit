@@ -14,16 +14,24 @@ export default function LoginForm() {
     ]
 
     return(
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="email-input">Email</label>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
+            <div className="flex flex-col gap-1">
+                <label htmlFor="email-input" 
+                 className="text-xs font-bold text-castanho uppercase tracking-wider">
+                    Email
+                </label>
                 <input type="email" name='email' id="email-input"
+                 className="w-full p-3 rounded-xl text-bordeaux font-medium"
                 />
             </div>
 
-            <div>
-                <label htmlFor="password-input">Password</label>
+            <div className="flex flex-col gap-1">
+                <label htmlFor="password-input" 
+                 className="text-xs font-bold text-castanho uppercase tracking-wider">
+                    Password
+                </label>
                 <input type="password" name='password' id="password-input"
+                 className="w-full p-3 rounded-xl text-bordeaux font-medium"
                 />
             </div>
 
@@ -35,7 +43,8 @@ export default function LoginForm() {
                 )}
             </div>
 
-            <button type="submit" disabled={loading}>
+            <button type="submit" disabled={loading}
+             className="w-full py-3.5 bg-bordeaux text-bg font-bold rounded-xl hover:opacity-95 active:scale-95 transition-all cursor-pointer text-center mt-2 disabled:opacity-50">
                 {loading ? 'A carregar...' : 'Entrar'}
             </button>
 
