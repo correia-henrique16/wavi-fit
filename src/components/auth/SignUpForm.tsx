@@ -14,29 +14,45 @@ export default function SignUpForm() {
     ]
 
     return(
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="name-input">Nome</label>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
+            <div className="flex flex-col gap-1">
+                <label htmlFor="name-input"
+                 className="text-xs font-bold text-castanho uppercase tracking-wider">
+                    Nome
+                </label>
                 <input type="text" name='name' id="name-input"
+                 className="w-full p-3 rounded-xl text-bordeaux font-medium"
                 />
                 
             </div>
 
-            <div>
-                <label htmlFor="email-input">Email</label>
+            <div className="flex flex-col gap-1">
+                <label htmlFor="email-input"
+                 className="text-xs font-bold text-castanho uppercase tracking-wider">
+                    Email
+                </label>
                 <input type="email" name='email' id="email-input"
+                 className="w-full p-3 rounded-xl text-bordeaux font-medium"
                 />
             </div>
 
-            <div>
-                <label htmlFor="password-input">Password</label>
+            <div className="flex flex-col gap-1">
+                <label htmlFor="password-input"
+                 className="text-xs font-bold text-castanho uppercase tracking-wider">
+                    Password
+                </label>
                 <input type="password" name='password' id="password-input"
+                 className="w-full p-3 rounded-xl text-bordeaux font-medium"
                 />
             </div>
 
-            <div>
-                <label htmlFor="confirm-input">Confirm Password</label>
+            <div className="flex flex-col gap-1">
+                <label htmlFor="confirm-input"
+                 className="text-xs font-bold text-castanho uppercase tracking-wider">
+                    Confirm Password
+                </label>
                 <input type="password" name='confirmPassword' id="confirm-input"
+                 className="w-full p-3 rounded-xl text-bordeaux font-medium"
                 />
             </div>
 
@@ -48,7 +64,8 @@ export default function SignUpForm() {
                 )}
             </div>
 
-            <button type="submit" disabled={loading}>
+            <button type="submit" disabled={loading}
+             className="w-full py-3.5 bg-bordeaux text-bg font-bold rounded-xl hover:opacity-95 active:scale-95 transition-all cursor-pointer text-center mt-2 disabled:opacity-50">
                 {loading ? 'A carregar...' : 'Registar'}
             </button>
         </form>

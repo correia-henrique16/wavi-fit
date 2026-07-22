@@ -33,31 +33,54 @@ export default function ModalAdicionarAlimentos({alimentosFiltrados, setPesquisa
         return null
     } else {        
         return(
-            <section className="z-10 fixed inset-0 bg-amber-50">
-                <div className="relative w-full h-full">
-                    <button type="button" onClick={() => {
-                        setShowModalAdd(false)
-                        router.replace(pathname)
-                    }}>Voltar</button>
+            <section className="fixed inset-0 z-50 overflow-y-auto bg-bg p-4 flex justify-center">
+                <div className="w-full max-w-md flex flex-col gap-4">
+                    <button type="button" 
+                        className="bg-transparent! self-baseline text-bordeaux text-base font-semibold"
+                        onClick={() => {
+                            setShowModalAdd(false)
+                            router.replace(pathname)
+                        }}
+                        >
+                        ← Voltar
+                    </button>
 
-                    <h2>Adicionar Alimentos</h2>
+                    <h2 className="text-2xl font-bold text-bordeaux text-center">Adicionar Alimentos</h2>
 
-                    <label htmlFor="alimentos-input">Pesquisar Alimento</label>
-                    <input type="text" id="alimentos-input" onChange={(e) => {setPesquisaAtual(e.target.value)}}/>
+                    <div className="flex flex-col gap-1">
+                        <label htmlFor="alimentos-input" className="text-base font-semibold text-bordeaux">Pesquisar Alimento</label>
+                        <input 
+                            type="text" 
+                            id="alimentos-input" 
+                            placeholder="Ex: Arroz, Frango..."
+                            className="w-full p-3 rounded-xl" 
+                            onChange={(e) => {setPesquisaAtual(e.target.value)}}
+                        />
+                    </div>
 
-                    <div className="flex flex-col gap-2">
-                        <Link href={`/alimentos/?voltar=${pathname}`}>Criar novo Alimento</Link>
+                    <div className={`flex flex-col gap-2 transition-all ${showModalQtd ? "pb-72" : ""}`}>
+                        <Link href={`/alimentos/?voltar=${pathname}`} 
+                            className="self-center py-2 px-3 text-bordeaux font-bold text-center hover:bg-bordeaux/5 rounded-lg transition-all">
+                        
+                            Criar novo Alimento
+                        </Link>
 
                         {alimentosFiltrados.map(alimento => {
                             return(
-                                <button key={alimento.id} value={alimento.id} onClick={() => {
-                                    setAlimentoSelecionado(alimento)
-                                    setShowModalQtd(true)
-                                }}>{alimento.name}</button>
+                                <button key={alimento.id} value={alimento.id}
+                                    className="w-full p-3.5 bg-rosa! text-bordeaux font-bold border border-bordeaux hover:bg-rosa-claro! hover:text-white"
+                                    onClick={() => {
+                                        setAlimentoSelecionado(alimento)
+                                        setShowModalQtd(true)
+                                    }}>{alimento.name}
+                                </button>
                             )
                         })}
 
-                        <button type="button" onClick={() => setShowAmount(showAmount + 5)}>Carregar mais...</button>
+                        <button type="button"
+                            className="self-center py-3 bg-transparent! text-bordeaux font-bold text-sm hover:underline hover:opacity-80 transition-all cursor-pointer"
+                            onClick={() => setShowAmount(showAmount + 5)}>Carregar mais...
+                        </button>
                     </div>
 
                     <ModalQuantidadeAlimentos alimentoSelecionado={alimentoSelecionado} setShowModalQtd={setShowModalQtd} showModalQtd={showModalQtd}

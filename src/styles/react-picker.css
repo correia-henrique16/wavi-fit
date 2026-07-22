@@ -1,0 +1,90 @@
+@import "react-day-picker/dist/style.css";
+
+/* Root & Variáveis de Cor */
+.rdp-root,
+.rdp {
+  --rdp-accent-color: var(--color-bordeaux) !important;
+  --rdp-accent-background-color: transparent !important;
+  --rdp-today-color: var(--color-rosa) !important;
+  --rdp-outline: none !important;
+  --rdp-outline-selected: none !important;
+  --rdp-ring: transparent !important;
+  color: var(--color-bordeaux) !important;
+  position: relative !important;
+  width: 100% !important;
+}
+
+/* Reset de Botões Internos */
+.rdp-root button {
+  background: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Cabeçalho do Mês e Ano */
+.rdp-month_caption,
+.rdp-caption {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 40px !important;
+  background: transparent !important;
+}
+
+.rdp-caption_label,
+.rdp-month_title {
+  color: var(--color-bordeaux) !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+}
+
+/* Setas de Navegação (Separadas nas pontas) */
+.rdp-nav {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 40px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  pointer-events: none !important;
+  box-sizing: border-box !important;
+  padding: 0 8px !important;
+  background: transparent !important;
+}
+
+.rdp-button_previous,
+.rdp-button_next {
+  pointer-events: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 32px !important;
+  height: 32px !important;
+}
+
+.rdp-button_previous svg,
+.rdp-button_next svg,
+.rdp-nav_button svg {
+  fill: var(--color-bordeaux) !important;
+  stroke: var(--color-bordeaux) !important;
+}
+
+/* Dia Selecionado */
+.rdp-selected,
+.rdp-day_selected,
+.rdp-button[aria-selected="true"] {
+  background-color: var(--color-bordeaux) !important;
+  color: var(--color-bg) !important;
+  font-weight: 700 !important;
+  border-radius: 9999px !important;
+  border: none !important;
+}
+
+/* Dia de Hoje */
+.rdp-today,
+.rdp-day_today {
+  color: var(--color-rosa) !important;
+  font-weight: 700 !important;
+}
