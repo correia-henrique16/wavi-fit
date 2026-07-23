@@ -37,7 +37,25 @@ export const UserInfoRegisterSchema = z.object({
   peso: z.number()
     .min(2.0, "O peso mínimo é 2kg")
     .max(500.0, "O peso máximo é 500kg")
-    .transform((val) => Number(val.toFixed(1)))
+    .transform((val) => Number(val.toFixed(1))),
+
+  altura: z.number()
+    .int("A altura deve ser um número inteiro (em cm)")
+    .min(100, "A altura mínimo é 100cm")
+    .max(280, "A altura máxima é 280cm"),
+  
+  peso_objetivo: z.number()
+    .min(30.0, "O peso mínimo é 30kg")
+    .max(300.0, "O peso máximo é 300kg")
+    .transform((val) => Number(val.toFixed(1))),
+
+  objetivo_id: z.coerce.number().int()
+    .min(1, 'Tem que escolher um objetivos')
+    .max(9, 'Tem que escolher um objetivos'),
+
+  atividade_id: z.coerce.number().int()
+    .min(1, 'Tem que escolher uma das atividades')
+    .max(4, 'Tem que escolher uma das atividades'),
 })
 
 

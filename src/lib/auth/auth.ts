@@ -2,6 +2,7 @@ import { createClient } from "../supabase/server";
 import { TypeSignUp, TypeLogin, TypeUserInfoRegister } from "@/models/input/User";
 import { getRequiredUser } from "../supabase/user";
 import datasDias from "@/utils/datas/datasDias";
+import { mudarDataNascimento, adicionarPeso, upsertUserInfo } from "./utils";
 
 export async function signUp(dados: TypeSignUp) {
     const supabase = await createClient()
@@ -45,35 +46,16 @@ export async function userInfoRegister(dados: TypeUserInfoRegister) {
     const supabase = await createClient()
     const user= await getRequiredUser()
 
-    const {nascimento, peso} = dados
+    const {nascimento, peso, altura, peso_objetivo, atividade_id, objetivo_id} = dados
 
-    const { data, error } = await supabase.auth.updateUser({
-        data: {
-            data_nascimento: nascimento
-        }
-    })
+    await mudarDataNascimento(nascimento)
 
-    if (error) {
-        throw new Error(error.message)
-    } else {
+    const {hojeString} = datasDias('')
 
-        const {hojeString} = datasDias('')
+    await adicionarPeso(peso, hojeString)
 
-        const { data, error } = await supabase
-        .from('historico_peso')
-        .insert(([{
-            peso: peso,
-            data_peso: hojeString,
-            user_id: user.id
-        }]))
-        .select()
+    await upsertUserInfo({altura, peso_objetivo, atividade_id, objetivo_id})
 
-        if (error) {
-            throw new Error(error.message)
-        } else {
-            return data
-        }
-    }
 }
 
 export async function signOut() {
