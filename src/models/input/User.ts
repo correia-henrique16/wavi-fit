@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { date, z } from "zod";
 
 
 export const LoginSchema = z.object({
@@ -31,7 +31,12 @@ export const SignupSchema = LoginSchema.extend({
   path: ["confirmPassword"], // Isto diz ao Zod para "atirar" o erro para o campo confirmPassword
 });
 
+export const UserInfoRegisterSchema = z.object({
+  nascimento: z.string().date({message: 'Formato da Data incorreto.'})
+})
+
 
 
 export type TypeLogin = z.infer<typeof LoginSchema>;
 export type TypeSignUp = z.infer<typeof SignupSchema>;
+export type TypeUserInfoRegister = z.infer<typeof UserInfoRegisterSchema>;
