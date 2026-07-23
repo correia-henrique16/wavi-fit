@@ -1,5 +1,7 @@
 import { createClient } from "../supabase/server";
 import { TypeSignUp, TypeLogin, TypeUserInfoRegister } from "@/models/input/User";
+import { getRequiredUser } from "../supabase/user";
+import datasDias from "@/utils/datas/datasDias";
 
 export async function signUp(dados: TypeSignUp) {
     const supabase = await createClient()
@@ -41,11 +43,9 @@ export async function login(dados: TypeLogin) {
 
 export async function userInfoRegister(dados: TypeUserInfoRegister) {
     const supabase = await createClient()
+    const user= await getRequiredUser()
 
-    const {nascimento} = dados
-
-    console.log(nascimento)
-    // return(nascimento)
+    const {nascimento, peso} = dados
 
     const { data, error } = await supabase.auth.updateUser({
         data: {
@@ -56,7 +56,23 @@ export async function userInfoRegister(dados: TypeUserInfoRegister) {
     if (error) {
         throw new Error(error.message)
     } else {
-        return nascimento
+
+        const {hojeString} = datasDias('')
+
+        const { data, error } = await supabase
+        .from('historico_peso')
+        .insert(([{
+            peso: peso,
+            data_peso: hojeString,
+            user_id: user.id
+        }]))
+        .select()
+
+        if (error) {
+            throw new Error(error.message)
+        } else {
+            return data
+        }
     }
 }
 

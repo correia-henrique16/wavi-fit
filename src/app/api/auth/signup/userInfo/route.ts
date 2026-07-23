@@ -16,8 +16,8 @@ export async function POST(request: Request) {
     }
 
     try {
-        const user = await userInfoRegister(dadosProntos)
-        return NextResponse.json({message: 'Data atualizada!'}, {status: 201}) 
+        await userInfoRegister(dadosProntos)
+        return NextResponse.json({message: 'Dados registados!'}, {status: 201}) 
     } catch (error: any) {
         console.log(error)
         return NextResponse.json({error: 'Erro ao Registar user: ',
