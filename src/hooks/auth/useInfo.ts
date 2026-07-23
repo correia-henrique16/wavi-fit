@@ -27,13 +27,13 @@ export function useInfo() {
         const data = Object.fromEntries(formData.entries())
 
         const validacao = UserInfoRegisterSchema.safeParse(data)
-
+        
         if (!validacao.success) {
             setErrors(validacao.error.format());
             setLoading(false)
             return
         }
-
+        
         try {
             const response = await fetch('/api/auth/signup/userInfo', {
                 method: 'POST',

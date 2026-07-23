@@ -32,19 +32,17 @@ export const SignupSchema = LoginSchema.extend({
 });
 
 export const UserInfoRegisterSchema = z.object({
-  nascimento: z.string().date({message: 'Formato da Data incorreto.'}),
-
-  peso: z.number()
+  peso: z.coerce.number()
     .min(2.0, "O peso mínimo é 2kg")
     .max(500.0, "O peso máximo é 500kg")
     .transform((val) => Number(val.toFixed(1))),
 
-  altura: z.number()
+  altura: z.coerce.number()
     .int("A altura deve ser um número inteiro (em cm)")
     .min(100, "A altura mínimo é 100cm")
     .max(280, "A altura máxima é 280cm"),
   
-  peso_objetivo: z.number()
+  peso_objetivo: z.coerce.number()
     .min(30.0, "O peso mínimo é 30kg")
     .max(300.0, "O peso máximo é 300kg")
     .transform((val) => Number(val.toFixed(1))),
