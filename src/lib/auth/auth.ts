@@ -1,6 +1,5 @@
 import { createClient } from "../supabase/server";
 import { TypeSignUp, TypeLogin, TypeUserInfoRegister } from "@/models/input/User";
-import { getRequiredUser } from "../supabase/user";
 import datasDias from "@/utils/datas/datasDias";
 import { mudarDataNascimento, adicionarPeso, upsertUserInfo } from "./utils";
 
@@ -43,8 +42,6 @@ export async function login(dados: TypeLogin) {
 }
 
 export async function userInfoRegister(dados: TypeUserInfoRegister) {
-    const supabase = await createClient()
-    const user= await getRequiredUser()
 
     const {nascimento, peso, altura, peso_objetivo, atividade_id, objetivo_id} = dados
 
