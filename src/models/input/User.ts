@@ -32,6 +32,8 @@ export const SignupSchema = LoginSchema.extend({
 });
 
 export const UserInfoRegisterSchema = z.object({
+  sexo: z.enum(['M', 'F']),
+
   peso: z.coerce.number()
     .min(2.0, "O peso mínimo é 2kg")
     .max(500.0, "O peso máximo é 500kg")

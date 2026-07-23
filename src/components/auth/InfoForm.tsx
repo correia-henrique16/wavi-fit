@@ -27,6 +27,18 @@ export default function InfoForm() {
 
     return(
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
+
+            <div>
+                <label htmlFor="homem-input">
+                    <img src="" alt="Simbolozinho do homem" />
+                    Homem  
+                </label>
+                <input type="radio" id="homem-input" name="sexo" value="H"/>
+
+                <label htmlFor="mulher-input">Mulher</label>
+                <input type="radio" id="mulher-input" name="sexo" value="M"/>
+            </div>
+
             <div className="flex flex-col gap-1">
                 <label htmlFor="peso-atual-input"
                  className="text-xs font-bold text-castanho uppercase tracking-wider">
