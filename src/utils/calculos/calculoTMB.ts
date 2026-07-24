@@ -19,10 +19,8 @@ export default function calculoTMB({sexo, peso, altura, data_nascimento, ativida
     } else if (sexo == "M") {
         tmb = (10 * peso) + (6.25 * altura) - (5 * idade) - 161
     }
-    console.log(tmb)
 
     const tmbAtividade = tmb * atividade_valor
-    console.log(objetivo_qtd)
 
     // 7.7 kcal por grama de gordura
     const tmbObjetivo = tmbAtividade + ((objetivo_qtd * 1000 * 7.7)/7)

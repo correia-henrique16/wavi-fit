@@ -16,11 +16,22 @@ export default function MetaDiaria({kcalDia, userInfo, pesoAtual}: ChildProps) {
     const objetivo_qtd = objetivo_id.quantidade
     const peso = pesoAtual.peso
 
-    const {tmbAtividadeRounded, metaDiariaRounded} = calculoTMB({sexo, peso, altura, data_nascimento, atividade_valor, objetivo_qtd})
+    const {metaDiariaRounded} = calculoTMB({sexo, peso, altura, data_nascimento, atividade_valor, objetivo_qtd})
+
+    const kcalRestantes = metaDiariaRounded - kcalDia
+    const kcalExcedidas = kcalRestantes < 0
 
     return(
         <div>
-
+            <p>{metaDiariaRounded}</p>
+            <span>-</span>
+            <p>{kcalDia}</p>
+            <span>=</span>
+            {!kcalExcedidas ?
+                <p>{kcalRestantes} Kcal restantes</p>:
+                <p>{Math.abs(kcalRestantes)} Kcal Excedidas</p>
+            }
+            
         </div>
     )
 }
