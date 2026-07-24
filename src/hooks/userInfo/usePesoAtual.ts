@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { TipoPeso } from "@/models/db-types/TipoPeso"
 
-export default function useBuscarPeso() {
+export default function useBuscarPesoAtual() {
     const [loadigPeso, setLoading] = useState(true)
     const [pesoAtual, setPesoAtual] = useState<TipoPeso>()
 

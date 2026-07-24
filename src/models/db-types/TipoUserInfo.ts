@@ -2,7 +2,7 @@ import { TipoAtividade } from "./TipoAtividade"
 import { TipoObjetivo } from "./TipoObjetivo"
 
 export type TipoUserInfo = {
-    altura: string,
+    altura: number,
     peso_objetivo: number,
     atividade_id: TipoAtividade,
     objetivo_id: TipoObjetivo,

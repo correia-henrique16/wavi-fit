@@ -53,7 +53,7 @@ export const UserInfoRegisterSchema = z.object({
 
   objetivo_id: z.coerce.number().int()
     .min(1, 'Tem que escolher um objetivos')
-    .max(9, 'Tem que escolher um objetivos'),
+    .max(7, 'Tem que escolher um objetivos'),
 
   atividade_id: z.coerce.number().int()
     .min(1, 'Tem que escolher uma das atividades')
