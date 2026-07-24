@@ -23,3 +23,23 @@ export async function getPesoAtual() {
         return data
     }
 }
+
+export async function getHistoricoPeso() {
+    const supabase = await createClient()
+    const user = await getRequiredUser()
+
+    const {data, error } = await supabase
+    .from('historico_peso')
+    .select('peso, data_peso')
+    .eq('user_id', user.id)
+    .order('data_peso', { ascending: false })
+    .order('id', { ascending: false })
+
+
+    if (error) {
+        console.error('Erro ao buscar peso atual: ', error);
+        return (error)
+    } else {
+        return data
+    }
+}
