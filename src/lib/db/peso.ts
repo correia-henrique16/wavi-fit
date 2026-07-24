@@ -30,7 +30,7 @@ export async function getHistoricoPeso() {
 
     const {data, error } = await supabase
     .from('historico_peso')
-    .select('peso, data_peso')
+    .select('id, peso, data_peso')
     .eq('user_id', user.id)
     .order('data_peso', { ascending: false })
     .order('id', { ascending: false })

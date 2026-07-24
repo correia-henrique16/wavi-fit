@@ -1,13 +1,26 @@
 'use client'
 
-import useBuscarPesoAtual from "@/hooks/userInfo/usePesoAtual"
 import useBuscarHistoricoPeso from "@/hooks/userInfo/useHistoricoPeso"
+import Link from "next/link"
 
 export default function PesoProgresso() {
-    const {historicoPeso, loadigPeso} = useBuscarHistoricoPeso()
+    const {historicoPeso, loadingPesoHistorico} = useBuscarHistoricoPeso()
+
+    if (loadingPesoHistorico) {
+        return <p>Loadingsssss...</p>
+    }
+
     return(
-        <div>
-            
-        </div>
+        <Link href={'/peso'}>
+            {historicoPeso.map(pesagem => {
+                const {peso, data_peso, id} = pesagem
+                return(
+                    <div key={id}>
+                        <p>{peso} Kg</p>
+                        <p>{data_peso}</p>
+                    </div>
+                )
+            })}
+        </Link>
     )
 }

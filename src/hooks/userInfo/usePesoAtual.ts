@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { TipoPeso } from "@/models/db-types/TipoPeso"
 
 export default function useBuscarPesoAtual() {
-    const [loadigPeso, setLoading] = useState(true)
+    const [loadingPesoAtual, setLoading] = useState(true)
     const [pesoAtual, setPesoAtual] = useState<TipoPeso>()
 
     const carregarPesoAtual = async () => {
@@ -27,5 +27,5 @@ export default function useBuscarPesoAtual() {
         carregarPesoAtual()
     }, [])
 
-    return{ loadigPeso, pesoAtual }
+    return{ loadingPesoAtual, pesoAtual }
 }

@@ -5,7 +5,7 @@ import { TipoPeso } from "@/models/db-types/TipoPeso"
 
 
 export default function useBuscarHistoricoPeso() {
-    const [loadigPeso, setLoading] = useState(true)
+    const [loadingPesoHistorico, setLoading] = useState(true)
     const [historicoPeso, setHistoricoPeso] = useState<TipoPeso[]>([])
 
     const carregarHistoricoPeso = async () => {
@@ -28,5 +28,5 @@ export default function useBuscarHistoricoPeso() {
         carregarHistoricoPeso()
     }, [])
 
-    return{ loadigPeso, historicoPeso }
+    return{ loadingPesoHistorico, historicoPeso }
 }

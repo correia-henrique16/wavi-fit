@@ -11,11 +11,11 @@ export default function CaloriasDiarias() {
     
     const {refeicoes, loading} = useBuscarRefeicoes(dataAtual)
     const {loadigUserInfo, userInfo} = useBuscarUserInfo()
-    const {loadigPeso, pesoAtual} = useBuscarPesoAtual()
+    const {loadingPesoAtual, pesoAtual} = useBuscarPesoAtual()
 
     const {kcalDia} = calculoMacrosDia(refeicoes)
 
-    if (loading || loadigUserInfo || loadigPeso) {
+    if (loading || loadigUserInfo || loadingPesoAtual) {
         return <p>A calcular...</p>
     } else {
         return(
