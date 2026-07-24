@@ -14,6 +14,7 @@ export default function InfoForm() {
         ...(errors?.peso?._errors || []),
         ...(errors?.altura?._errors || []),
         ...(errors?.peso_objetivo?._errors || []),
+        ...(errors?.peso_inicial?._errors || []),
         ...(errors?.objetivo_id?._errors || []),
         ...(errors?.atividade_id?._errors || []),
         ...(serverError ? [serverError] : [])
@@ -27,6 +28,19 @@ export default function InfoForm() {
 
     return(
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
+
+            <div>
+                <label htmlFor="input-nascimento"
+                 className="text-xs font-bold text-castanho uppercase tracking-wider">
+                    Data de nascimento
+                </label>
+                <input 
+                    type="date" id="input-nascimento"
+                    max={new Date().toISOString().split('T')[0]} // Impede datas futuras
+                    className="p-2 border rounded-md"
+                    name="nascimento"
+                />
+            </div>
 
             <div>
                 <p>Género</p>

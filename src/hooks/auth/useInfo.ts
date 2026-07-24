@@ -6,10 +6,12 @@ export function useInfo() {
     const router = useRouter()
 
     const [formData, setFormData] = useState({
+        nascimento: '',
         sexo: '',
         peso: '',
         altura: '',
         peso_objetivo: '',
+        peso_inicial: '',
         objetivo_id: '',
         atividade_id: ''
     })

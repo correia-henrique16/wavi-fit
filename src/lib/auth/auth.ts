@@ -48,10 +48,11 @@ export async function userInfoRegister(dados: TypeUserInfoRegister) {
     const {hojeString} = datasDias('')
 
     const nascimento = hojeString
+    const peso_inicial = peso
 
     await adicionarPeso(peso, nascimento)
 
-    await upsertUserInfo({nascimento, altura, peso_objetivo, atividade_id, objetivo_id, sexo})
+    await upsertUserInfo({nascimento, altura, peso_objetivo, atividade_id, objetivo_id, sexo, peso_inicial})
 
 }
 

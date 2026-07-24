@@ -4,6 +4,7 @@ import { getRequiredUser } from "../supabase/user";
 interface createUserInfoChildren {
     altura: number,
     peso_objetivo: number,
+    peso_inicial: number,
     objetivo_id: number,
     atividade_id: number,
     nascimento: string | undefined,
@@ -32,7 +33,7 @@ export async function adicionarPeso(peso: number, data_peso: string) {
 
 }
 
-export async function upsertUserInfo({altura, peso_objetivo, objetivo_id, atividade_id, nascimento, sexo}: createUserInfoChildren){
+export async function upsertUserInfo({altura, peso_objetivo, peso_inicial, objetivo_id, atividade_id, nascimento, sexo}: createUserInfoChildren){
     const supabase = await createClient()
     const user= await getRequiredUser()
 
@@ -41,6 +42,7 @@ export async function upsertUserInfo({altura, peso_objetivo, objetivo_id, ativid
     .upsert(([{
         altura: altura,
         peso_objetivo: peso_objetivo,
+        peso_inicial: peso_inicial,
         objetivo_id: objetivo_id,
         atividade_id: atividade_id,
         user_id: user.id,
