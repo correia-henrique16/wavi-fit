@@ -20,7 +20,7 @@ export default function CaloriasDiarias() {
     } else {
         return(
             <div>
-                <MetaDiaria kcalDia={kcalDia} userInfo={userInfo} pesoAtual={pesoAtual}/>
+                {/* <MetaDiaria kcalDia={kcalDia} userInfo={userInfo} pesoAtual={pesoAtual}/> */}
 
                 <div className="bg-white/40 backdrop-blur-md rounded-3xl p-6 border border-castanho/10 shadow-sm text-center mt-6
                 aspect-square flex flex-col justify-center"

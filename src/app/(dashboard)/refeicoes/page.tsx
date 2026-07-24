@@ -10,6 +10,9 @@ import MacrosDiarias from "@/components/refeicoes/listar/MacrosDiarias"
 import useBuscarTipos from "@/hooks/refeicoes/useBuscarTipos"
 import BtnAdicionarRefeicao from "@/components/refeicoes/listar/BtnAdicionarRefeicao"
 import datasDias from "@/utils/datas/datasDias"
+import MetaDiaria from "@/components/inicial/MetaDiaria"
+import useBuscarUserInfo from "@/hooks/userInfo/useBuscarUserInfo"
+import useBuscarPesoAtual from "@/hooks/userInfo/usePesoAtual"
 import { useState } from "react"
 
 
@@ -19,10 +22,16 @@ export default function RefeicoesPage() {
     const {refeicoes, loading} = useBuscarRefeicoes(date)
     const {proteinaDia, carbohydratesDia, fatDia, kcalDia} = calculoMacrosDia(refeicoes)
     const {loadingTipo, tipos} = useBuscarTipos()
+    const {loadigUserInfo, userInfo} = useBuscarUserInfo()
+    const {loadingPesoAtual, pesoAtual} = useBuscarPesoAtual()
 
     const [refeicaoAberta, setRefeicaoAberta] = useState<number[]>([])
 
     const {anteriorDataString, dataSelecionada, proximaDataString, getLabel} = datasDias(date)  
+
+    if (loadigUserInfo || loading || loadingTipo || loadingPesoAtual) {
+        return <p>Loadingg</p>
+    }
 
     return (
         
@@ -42,6 +51,8 @@ export default function RefeicoesPage() {
             </nav>
 
             <main className="main-nav">
+                <MetaDiaria kcalDia={kcalDia} userInfo={userInfo} pesoAtual={pesoAtual}/>
+
                 <ListarData setDate={setDate} anteriorDataString={anteriorDataString} dataSelecionada={dataSelecionada} 
                     proximaDataString={proximaDataString} getLabel={getLabel}
                 />
