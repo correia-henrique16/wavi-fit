@@ -51,6 +51,12 @@ export const UserInfoRegisterSchema = z.object({
     .max(300.0, "O peso máximo é 300kg")
     .transform((val) => Number(val.toFixed(1))),
 
+  peso_inicial: z.coerce.number()
+    .min(30.0, "O peso mínimo é 30kg")
+    .max(300.0, "O peso máximo é 300kg")
+    .transform((val) => Number(val.toFixed(1)))
+    .optional(),
+
   objetivo_id: z.coerce.number().int()
     .min(1, 'Tem que escolher um objetivos')
     .max(7, 'Tem que escolher um objetivos'),

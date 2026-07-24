@@ -14,6 +14,7 @@ export default function InfoForm() {
         ...(errors?.peso?._errors || []),
         ...(errors?.altura?._errors || []),
         ...(errors?.peso_objetivo?._errors || []),
+        ...(errors?.peso_inicial?._errors || []),
         ...(errors?.objetivo_id?._errors || []),
         ...(errors?.atividade_id?._errors || []),
         ...(serverError ? [serverError] : [])

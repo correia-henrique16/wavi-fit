@@ -10,6 +10,7 @@ export function useInfo() {
         peso: '',
         altura: '',
         peso_objetivo: '',
+        peso_inicial: '',
         objetivo_id: '',
         atividade_id: ''
     })
