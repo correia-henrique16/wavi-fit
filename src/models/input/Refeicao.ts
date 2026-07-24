@@ -18,6 +18,9 @@ export const RefeicaoSchema = z.object({
         .min(1, 'Tem que escolher um dos tipos de refeição')
         .max(4, 'Tem que escolher um dos tipos de refeição'),
 
+    objetivos_id: z.number().int("ID inválido").positive("Selecione um objetivo válido"),
+    atividades_id: z.number().int("ID inválido").positive("Selecione um nível de atividade válido"),
+
     data_refeicao: z.string().date({message: 'Formato da Data incorreto.'})
 })
 

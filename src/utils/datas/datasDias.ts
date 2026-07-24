@@ -25,6 +25,6 @@ export default function datasDias(date: string) {
     }
 
     return {
-        dataSelecionada, proximaDataString, anteriorDataString, getLabel
+        dataSelecionada, proximaDataString, anteriorDataString, getLabel, hojeString
     }
 }

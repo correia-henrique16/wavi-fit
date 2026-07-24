@@ -1,5 +1,7 @@
 import { createClient } from "../supabase/server";
-import { TypeSignUp, TypeLogin } from "@/models/input/User";
+import { TypeSignUp, TypeLogin, TypeUserInfoRegister } from "@/models/input/User";
+import datasDias from "@/utils/datas/datasDias";
+import { adicionarPeso, upsertUserInfo } from "./utils";
 
 export async function signUp(dados: TypeSignUp) {
     const supabase = await createClient()
@@ -37,6 +39,20 @@ export async function login(dados: TypeLogin) {
     } else {
         console.log('User logado')
     }
+}
+
+export async function userInfoRegister(dados: TypeUserInfoRegister) {
+
+    const {peso, altura, peso_objetivo, atividade_id, objetivo_id, sexo} = dados
+
+    const {hojeString} = datasDias('')
+
+    const nascimento = hojeString
+
+    await adicionarPeso(peso, nascimento)
+
+    await upsertUserInfo({nascimento, altura, peso_objetivo, atividade_id, objetivo_id, sexo})
+
 }
 
 export async function signOut() {
