@@ -1,6 +1,7 @@
 import CaloriasDiarias from "@/components/inicial/CaloriasDiarias";
 import ProfileBtn from "@/components/inicial/ProfileBtn";
 import RefeicoesBtn from "@/components/inicial/RefeicoesBtn";
+import PesoProgresso from "@/components/inicial/PesoProgresso";
 
 export default function Home() {
   return (
@@ -21,6 +22,8 @@ export default function Home() {
 
       <main>
         <CaloriasDiarias />
+
+        <PesoProgresso />
       </main>
     </div>
   );
