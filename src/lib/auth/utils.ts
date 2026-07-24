@@ -5,24 +5,11 @@ interface createUserInfoChildren {
     altura: number,
     peso_objetivo: number,
     objetivo_id: number,
-    atividade_id: number
+    atividade_id: number,
+    nascimento: string | undefined,
+    sexo: string
 }
 
-export async function mudarDataNascimento(nascimento: string) {
-    const supabase = await createClient()
-
-    const { data, error } = await supabase.auth.updateUser({
-        data: {
-            data_nascimento: nascimento
-        }
-    })
-
-    if (error) {
-        throw new Error(error.message)
-    } else {
-        return
-    }
-}
 
 export async function adicionarPeso(peso: number, data_peso: string) {
     const supabase = await createClient()
@@ -45,7 +32,7 @@ export async function adicionarPeso(peso: number, data_peso: string) {
 
 }
 
-export async function upsertUserInfo({altura, peso_objetivo, objetivo_id, atividade_id}: createUserInfoChildren){
+export async function upsertUserInfo({altura, peso_objetivo, objetivo_id, atividade_id, nascimento, sexo}: createUserInfoChildren){
     const supabase = await createClient()
     const user= await getRequiredUser()
 
@@ -56,7 +43,9 @@ export async function upsertUserInfo({altura, peso_objetivo, objetivo_id, ativid
         peso_objetivo: peso_objetivo,
         objetivo_id: objetivo_id,
         atividade_id: atividade_id,
-        user_id: user.id
+        user_id: user.id,
+        data_nascimento: nascimento,
+        sexo: sexo
     }]))
     .select()
 
