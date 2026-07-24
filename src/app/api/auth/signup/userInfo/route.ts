@@ -20,7 +20,7 @@ export async function POST(request: Request) {
         return NextResponse.json({message: 'Dados registados!'}, {status: 201}) 
     } catch (error: any) {
         console.log(error)
-        return NextResponse.json({error: 'Erro ao Registar user: ',
+        return NextResponse.json({error: 'Erro ao Registar dados: ',
             detalhes: error.message || error
         }, {status: 400})
     }
