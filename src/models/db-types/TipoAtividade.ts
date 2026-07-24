@@ -1,4 +1,5 @@
 export type TipoAtividade = {
     id: number,
-    nivel: string
+    nivel: string,
+    valor: number
 }
