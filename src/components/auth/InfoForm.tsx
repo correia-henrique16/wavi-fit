@@ -30,6 +30,19 @@ export default function InfoForm() {
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
 
             <div>
+                <label htmlFor="input-nascimento"
+                 className="text-xs font-bold text-castanho uppercase tracking-wider">
+                    Data de nascimento
+                </label>
+                <input 
+                    type="date" id="input-nascimento"
+                    max={new Date().toISOString().split('T')[0]} // Impede datas futuras
+                    className="p-2 border rounded-md"
+                    name="nascimento"
+                />
+            </div>
+
+            <div>
                 <p>Género</p>
                 <label htmlFor="homem-input">
                     <img src="" alt="Simbolozinho do homem" />

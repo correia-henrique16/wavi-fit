@@ -32,7 +32,16 @@ export const SignupSchema = LoginSchema.extend({
 });
 
 export const UserInfoRegisterSchema = z.object({
-  nascimento: z.string().date().optional(),
+  nascimento: z.string().date()
+    .min(1, "A data de nascimento é obrigatória.")
+    .refine((val) => {
+      const dataInserida = new Date(val)
+      const hoje = new Date()
+      const idade = hoje.getFullYear() - dataInserida.getFullYear()
+      return idade >= 13
+    }, {
+      message: "Tens de ter pelo menos 13 anos para te registar.",
+    }),
 
   sexo: z.enum(['H', 'M']),
 
