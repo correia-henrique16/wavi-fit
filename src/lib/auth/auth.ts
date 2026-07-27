@@ -57,5 +57,10 @@ export async function userInfoRegister(dados: TypeUserInfoRegister) {
 }
 
 export async function signOut() {
+    const supabase = await createClient()
+    const { error } = await supabase.auth.signOut()
 
+    if (error) {
+        throw new Error(error.message)
+    }
 }
