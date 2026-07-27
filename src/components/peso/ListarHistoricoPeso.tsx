@@ -1,6 +1,7 @@
 'use client'
 
 import useBuscarHistoricoPeso from "@/hooks/peso/useHistoricoPeso"
+import Link from "next/link"
 
 export default function ListarHistoricoPeso() {
 
@@ -18,10 +19,10 @@ export default function ListarHistoricoPeso() {
                 {historicoPeso.map(peso => {
                     return(
                         <li key={peso.id}>
-                            <button>
+                            <Link href={`/peso/${peso.id}`}>
                                 <p>{peso.peso}</p>
                                 <p>{peso.data_peso}</p>
-                            </button>
+                            </Link>
                         </li>
                     )
                 })}

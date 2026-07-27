@@ -59,6 +59,28 @@ export async function editPeso(idPeso: number, novosDados: TypePeso) {
     }
 }
 
+export async function getPesoId(idPeso: number) {
+    const supabase = await createClient()
+    const user = await getRequiredUser()
+
+    if (idPeso == null) {
+        return null
+    }
+
+    const {data, error} = await supabase
+    .from('historico_peso')
+    .select('id, peso, data_peso')
+    .eq('user_id', user.id)
+    .eq('id', idPeso)
+
+    if (error) {
+        console.error('Erro ao buscar peso: ', error)
+        return (error)
+    }
+
+    return data
+}
+
 export async function getPesoAtual() {
     const supabase = await createClient()
     const user = await getRequiredUser()

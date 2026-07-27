@@ -8,7 +8,7 @@ export default async function apagarRefeicao(idRefeicao: number, router: ReturnT
         })
 
         if (!response.ok) {
-            console.log('deu raia')
+            console.error('Erro ao apagar refeicao')
         } else {
             router.push('/refeicoes')
         }

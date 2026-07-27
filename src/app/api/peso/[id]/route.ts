@@ -1,6 +1,19 @@
 import { NextResponse } from "next/server"
 import { PesoSchema } from "@/models/input/Peso"
-import { delPeso, editPeso } from "@/lib/db/peso"
+import { delPeso, editPeso, getPesoId } from "@/lib/db/peso"
+
+export async function GET(request: Request, {params}: {params: Promise<{id: string}>}) {
+    const {id} = await params
+
+    const intId = parseInt(id)
+
+    try {
+        const dados = await getPesoId(intId)
+        return NextResponse.json(dados)
+    } catch (error) {
+        return NextResponse.json({error: 'Erro ao buscar peso por id'}, {status: 500})
+    }
+}
 
 export async function DELETE(request: Request, {params}: {params: Promise<{id: string}>}) {
     const {id} = await params
