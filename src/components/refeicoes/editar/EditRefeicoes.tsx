@@ -71,7 +71,7 @@ export default function EditRefeicoes({tipos, setShowModal, modal, alimentosAdic
                 </select>
             </div>
 
-            <MostrarCalendario setMostrarCalendario={setMostrarCalendario} mostrarCalendario={mostrarCalendario} dataSelecionada={dataSelecionada} handleMudarData={handleMudarData} />
+            <MostrarCalendario setMostrarCalendario={setMostrarCalendario} mostrarCalendario={mostrarCalendario} dataSelecionada={dataSelecionada} handleMudarData={handleMudarData} label="Data Refeição" name="data_refeicao" />
 
             <div className="flex flex-col gap-1">
                 <label htmlFor="name-input" className="text-xs font-bold text-castanho uppercase tracking-wider">

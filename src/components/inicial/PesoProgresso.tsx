@@ -1,6 +1,6 @@
 'use client'
 
-import useBuscarHistoricoPeso from "@/hooks/userInfo/useHistoricoPeso"
+import useBuscarHistoricoPeso from "@/hooks/peso/useHistoricoPeso"
 import Link from "next/link"
 
 export default function PesoProgresso() {

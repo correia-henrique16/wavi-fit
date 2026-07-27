@@ -1,6 +1,85 @@
 import { createClient } from "../supabase/server";
+import { TypePeso } from "@/models/input/Peso";
 import { getRequiredUser } from "../supabase/user";
 
+export async function addPeso(novoPeso: TypePeso) {
+    const user = await getRequiredUser()
+
+    const supabase = await createClient()
+    
+    const {data, error} = await supabase
+    .from('historico_peso')
+    .insert ([{
+        ...novoPeso,
+        user_id: user.id
+    }])
+    .select()
+
+    if (error) {
+        throw new Error(error.message)
+    } else {
+        return data
+    }
+}
+
+export async function delPeso(idPeso: number) {
+    const supabase = await createClient()
+    const user = await getRequiredUser()
+    
+    const { data, error } = await supabase
+    .from('historico_peso')
+    .delete()
+    .eq('id', idPeso)
+    .eq('user_id', user.id)
+    .select()
+
+    if (error) {
+        throw new Error(error.message)
+    } else {
+        return (data)
+    }
+}
+
+export async function editPeso(idPeso: number, novosDados: TypePeso) {
+    const supabase = await createClient()
+    const user = await getRequiredUser()
+
+    const {data, error} = await supabase
+    .from('historico_peso')
+    .update(novosDados)
+    .eq('id', idPeso)
+    .eq('user_id', user.id)
+    .select()
+
+
+    if (error) {
+        throw new Error(error.message)
+    } else {
+        return data
+    }
+}
+
+export async function getPesoId(idPeso: number) {
+    const supabase = await createClient()
+    const user = await getRequiredUser()
+
+    if (idPeso == null) {
+        return null
+    }
+
+    const {data, error} = await supabase
+    .from('historico_peso')
+    .select('id, peso, data_peso')
+    .eq('user_id', user.id)
+    .eq('id', idPeso)
+
+    if (error) {
+        console.error('Erro ao buscar peso: ', error)
+        return (error)
+    }
+
+    return data
+}
 
 export async function getPesoAtual() {
     const supabase = await createClient()

@@ -3,7 +3,7 @@
 import useBuscarRefeicoes from "@/hooks/refeicoes/useBuscarRefeicoes"
 import calculoMacrosDia from "@/utils/calculos/calculoMacrosDia"
 import useBuscarUserInfo from "@/hooks/userInfo/useBuscarUserInfo"
-import useBuscarPesoAtual from "@/hooks/userInfo/usePesoAtual"
+import useBuscarPesoAtual from "@/hooks/peso/usePesoAtual"
 import MetaDiaria from "./MetaDiaria"
 
 export default function CaloriasDiarias() {
