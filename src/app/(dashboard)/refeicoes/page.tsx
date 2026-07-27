@@ -12,7 +12,7 @@ import BtnAdicionarRefeicao from "@/components/refeicoes/listar/BtnAdicionarRefe
 import datasDias from "@/utils/datas/datasDias"
 import MetaDiaria from "@/components/inicial/MetaDiaria"
 import useBuscarUserInfo from "@/hooks/userInfo/useBuscarUserInfo"
-import useBuscarPesoAtual from "@/hooks/userInfo/usePesoAtual"
+import useBuscarPesoAtual from "@/hooks/peso/usePesoAtual"
 import { useState } from "react"
 
 

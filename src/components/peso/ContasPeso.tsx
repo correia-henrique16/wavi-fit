@@ -1,6 +1,6 @@
 'use client'
 
-import useBuscarPesoAtual from "@/hooks/userInfo/usePesoAtual"
+import useBuscarPesoAtual from "@/hooks/peso/usePesoAtual"
 import useBuscarUserInfo from "@/hooks/userInfo/useBuscarUserInfo"
 import calculoProgressoPeso from "@/utils/calculos/calculoProgressoPeso"
 

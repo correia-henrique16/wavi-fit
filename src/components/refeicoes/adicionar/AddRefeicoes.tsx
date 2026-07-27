@@ -58,7 +58,7 @@ export default function AddRefeicoes({tipos, setShowModal, modal, alimentosAdici
                 )}
             </div>
 
-            <MostrarCalendario setMostrarCalendario={setMostrarCalendario} mostrarCalendario={mostrarCalendario} dataSelecionada={dataSelecionada} handleMudarData={handleMudarData} />
+            <MostrarCalendario setMostrarCalendario={setMostrarCalendario} mostrarCalendario={mostrarCalendario} dataSelecionada={dataSelecionada} handleMudarData={handleMudarData} label="Data Refeição" name="data_refeicao" />
 
             <div>
                 <label htmlFor="tipo-select"></label>

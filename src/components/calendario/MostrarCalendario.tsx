@@ -6,14 +6,16 @@ interface ChildProps {
     setMostrarCalendario: Dispatch<SetStateAction<boolean>>,
     mostrarCalendario: boolean,
     dataSelecionada: Date | undefined,
-    handleMudarData: (dia: Date | undefined) => void
+    handleMudarData: (dia: Date | undefined) => void,
+    label: string,
+    name: string
 }
 
-export default function MostrarCalendario({setMostrarCalendario, mostrarCalendario, dataSelecionada, handleMudarData}: ChildProps) {
+export default function MostrarCalendario({setMostrarCalendario, mostrarCalendario, dataSelecionada, handleMudarData, label, name}: ChildProps) {
     
     return(
         <div className="flex flex-col gap-2 my-4">
-            <label className="text-bordeaux font-bold">Data da Refeição</label>
+            <label className="text-bordeaux font-bold">{label}</label>
             
 
             <button 
@@ -40,7 +42,8 @@ export default function MostrarCalendario({setMostrarCalendario, mostrarCalendar
 
             <input 
                 type="hidden" 
-                name="data_refeicao" 
+                // name="data_refeicao" 
+                name={name} 
                 value={dataSelecionada ? format(dataSelecionada, "yyyy-MM-dd") : ''} 
             />
         </div>
