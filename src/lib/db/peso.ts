@@ -22,6 +22,43 @@ export async function addPeso(novoPeso: TypePeso) {
     }
 }
 
+export async function delPeso(idPeso: number) {
+    const supabase = await createClient()
+    const user = await getRequiredUser()
+    
+    const { data, error } = await supabase
+    .from('historico_peso')
+    .delete()
+    .eq('id', idPeso)
+    .eq('user_id', user.id)
+    .select()
+
+    if (error) {
+        throw new Error(error.message)
+    } else {
+        return (data)
+    }
+}
+
+export async function editPeso(idPeso: number, novosDados: TypePeso) {
+    const supabase = await createClient()
+    const user = await getRequiredUser()
+
+    const {data, error} = await supabase
+    .from('historico_peso')
+    .update(novosDados)
+    .eq('id', idPeso)
+    .eq('user_id', user.id)
+    .select()
+
+
+    if (error) {
+        throw new Error(error.message)
+    } else {
+        return data
+    }
+}
+
 export async function getPesoAtual() {
     const supabase = await createClient()
     const user = await getRequiredUser()
