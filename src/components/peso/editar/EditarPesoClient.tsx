@@ -4,6 +4,7 @@ import { TipoPeso } from "@/models/db-types/TipoPeso"
 import useApagarPeso from "@/hooks/peso/useApagarPeso"
 import BtnVoltar from "@/components/refeicoes/ui/BtnVoltar"
 import ConfirmarApagarPeso from "../Modals/ConfirmarApagarPeso"
+import EditPeso from "./EditPeso"
 
 interface ChildProps {
     peso: TipoPeso
@@ -33,7 +34,7 @@ export default function EditarPesoClient({peso}: ChildProps) {
 
             <main className="main-nav max-w-md mx-auto p-4 flex flex-col gap-4 min-h-screen">
 
-                {/* <EditRefeicoes refeicao={refeicao} /> */}
+                <EditPeso peso={peso} />
 
                 {showConfirm && <ConfirmarApagarPeso setShowConfirm={setShowConfirm} idPeso={peso.id}/>}
 
