@@ -21,7 +21,7 @@ export default function PesoPage() {
                 </div>
             </nav>            
 
-            <main className="main-nav">
+            <main className="main-nav ">
 
                 <AdicionarPeso />
 

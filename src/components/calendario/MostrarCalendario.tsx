@@ -14,7 +14,7 @@ interface ChildProps {
 export default function MostrarCalendario({setMostrarCalendario, mostrarCalendario, dataSelecionada, handleMudarData, label, name}: ChildProps) {
     
     return(
-        <div className="flex flex-col gap-2 my-4">
+        <div className="flex flex-col gap-1">
             <label className="text-bordeaux font-bold">{label}</label>
             
 
