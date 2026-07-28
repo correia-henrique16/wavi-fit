@@ -1,12 +1,19 @@
 import { useState } from "react";
-import { TipoPeso } from "@/models/db-types/TipoPeso";
-import { PesoSchema } from "@/models/input/Peso";
+import { TipoUserInfo } from "@/models/db-types/TipoUserInfo";
+import { UserInfoSchema } from "@/models/input/User";
 
-export default function useEditarPeso(peso: TipoPeso) {
+export default function useEditarProfile(profile: TipoUserInfo, name: string) {
+
 
     const [formData, setFormData] = useState({
-        data_peso: peso.data_peso,
-        peso: peso.peso
+        name : name,
+        nascimento : profile.data_nascimento,
+        sexo : profile.sexo,
+        peso_inicial : profile.peso_inicial,
+        peso_objetivo : profile.peso_objetivo,
+        altura: profile.altura,
+        objetivo_id : profile.objetivo_id,
+        atividade_id : profile.atividade_id,
     })
 
     const [success, setSuccess] = useState('')
@@ -14,7 +21,7 @@ export default function useEditarPeso(peso: TipoPeso) {
     const [serverError, setServerError] = useState('')
     const [loading, setLoading] = useState(false)
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>, idPeso: number) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const form = e.currentTarget
         setLoading(true)
@@ -22,16 +29,19 @@ export default function useEditarPeso(peso: TipoPeso) {
         const formData = new FormData(e.currentTarget)
         const data = Object.fromEntries(formData.entries())
 
-        const validacao = PesoSchema.safeParse(data)
+        const dadosCompletos = {...data, name}
+
+        const validacao = UserInfoSchema.safeParse(dadosCompletos)
 
         if (!validacao.success) {
             setErrors(validacao.error.format());
+            console.log(validacao.error)
             setLoading(false)
             return
         }
 
         try {
-            const response = await fetch(`/api/peso/${idPeso}`, {
+            const response = await fetch(`/api/userInfo`, {
                 method: 'PUT',
                 body: JSON.stringify(validacao.data)
             })
@@ -42,7 +52,7 @@ export default function useEditarPeso(peso: TipoPeso) {
                 form.reset();
                 setErrors({});
                 setServerError('');
-                setSuccess('Peso editado!')
+                setSuccess('Perfil editado!')
             }
         } catch (error) {
             setServerError('Erro de ligação')
