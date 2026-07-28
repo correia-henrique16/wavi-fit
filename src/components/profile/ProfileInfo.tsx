@@ -56,6 +56,9 @@ export default function ProfileInfo({user}: ChildProps) {
 
 
             <div>
+                <h3>Altura</h3>
+                <p>{altura}</p>
+
                 <h3>Peso Inicial</h3>
                 <p>{pesoInicial}</p>
 
