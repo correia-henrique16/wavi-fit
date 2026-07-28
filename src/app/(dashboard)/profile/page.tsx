@@ -1,4 +1,5 @@
 import BtnVoltar from "@/components/refeicoes/ui/BtnVoltar"
+import BtnEditar from "@/components/profile/BtnEditar"
 import ProfileInfo from "@/components/profile/ProfileInfo"
 import { getRequiredUser } from "@/lib/supabase/user"
 import LogoutBtn from "@/components/profile/LogoutBtn"
@@ -20,7 +21,7 @@ export default async function ProfilePage() {
                         </div>
         
                         <div className="w-1/3 flex justify-end items-center ">
-        
+                            <BtnEditar />
                         </div>
                     </nav>            
         

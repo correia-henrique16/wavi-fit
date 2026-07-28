@@ -43,14 +43,13 @@ export async function login(dados: TypeLogin) {
 
 export async function userInfoRegister(dados: TypeUserInfoRegister) {
 
-    const {peso, altura, peso_objetivo, atividade_id, objetivo_id, sexo} = dados
+    const {peso, altura, peso_objetivo, atividade_id, objetivo_id, sexo, nascimento} = dados
 
     const {hojeString} = datasDias('')
 
-    const nascimento = hojeString
     const peso_inicial = peso
 
-    await adicionarPeso(peso, nascimento)
+    await adicionarPeso(peso, hojeString)
 
     await upsertUserInfo({nascimento, altura, peso_objetivo, atividade_id, objetivo_id, sexo, peso_inicial})
 

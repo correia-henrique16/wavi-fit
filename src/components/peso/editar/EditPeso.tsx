@@ -64,7 +64,7 @@ export default function EditPeso({peso}: ChildProps) {
             
             <button type="submit" 
                 className="w-full py-3.5 bg-bordeaux text-bg font-bold rounded-xl hover:opacity-95 active:scale-95 transition-all cursor-pointer text-center mt-2">
-                {loading ? 'A adicionar...' : 'Adicionar'}
+                {loading ? 'A Confirmar...' : 'Confirmar'}
             </button>
         </form>
     )

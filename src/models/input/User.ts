@@ -9,7 +9,8 @@ export const LoginSchema = z.object({
 
 export const SignupSchema = LoginSchema.extend({
     name: z.string()
-        .min(2, "Minimo de 2 caratéres no nome"),
+        .min(2, "Minimo de 2 caratéres no nome")
+        .max(30, "Máximo de 30 caratéres no nome"),
 
     password: z.string()
         .min(8, "A password deve ter pelo menos 8 caracteres")
@@ -60,11 +61,48 @@ export const UserInfoRegisterSchema = z.object({
     .max(300.0, "O peso máximo é 300kg")
     .transform((val) => Number(val.toFixed(1))),
 
+  objetivo_id: z.coerce.number().int()
+    .min(1, 'Tem que escolher um objetivos')
+    .max(7, 'Tem que escolher um objetivos'),
+
+  atividade_id: z.coerce.number().int()
+    .min(1, 'Tem que escolher uma das atividades')
+    .max(4, 'Tem que escolher uma das atividades'),
+})
+
+
+export const UserInfoSchema = z.object({
+  name: z.string()
+        .min(2, "Minimo de 2 caratéres no nome")
+        .max(30, "Máximo de 30 caratéres no nome"),
+
+  nascimento: z.string().date()
+    .min(1, "A data de nascimento é obrigatória.")
+    .refine((val) => {
+      const dataInserida = new Date(val)
+      const hoje = new Date()
+      const idade = hoje.getFullYear() - dataInserida.getFullYear()
+      return idade >= 13
+    }, {
+      message: "Tens de ter pelo menos 13 anos para te registar.",
+    }),
+
+  sexo: z.enum(['H', 'M']),
+
+  altura: z.coerce.number()
+    .int("A altura deve ser um número inteiro (em cm)")
+    .min(100, "A altura mínimo é 100cm")
+    .max(280, "A altura máxima é 280cm"),
+  
+  peso_objetivo: z.coerce.number()
+    .min(30.0, "O peso mínimo é 30kg")
+    .max(300.0, "O peso máximo é 300kg")
+    .transform((val) => Number(val.toFixed(1))),
+
   peso_inicial: z.coerce.number()
     .min(30.0, "O peso mínimo é 30kg")
     .max(300.0, "O peso máximo é 300kg")
-    .transform((val) => Number(val.toFixed(1)))
-    .optional(),
+    .transform((val) => Number(val.toFixed(1))),
 
   objetivo_id: z.coerce.number().int()
     .min(1, 'Tem que escolher um objetivos')
@@ -80,3 +118,4 @@ export const UserInfoRegisterSchema = z.object({
 export type TypeLogin = z.infer<typeof LoginSchema>;
 export type TypeSignUp = z.infer<typeof SignupSchema>;
 export type TypeUserInfoRegister = z.infer<typeof UserInfoRegisterSchema>;
+export type TypeUserInfo = z.infer<typeof UserInfoSchema>;
