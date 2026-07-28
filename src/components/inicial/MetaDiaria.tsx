@@ -37,7 +37,7 @@ export default function MetaDiaria({kcalDia, userInfo, pesoAtual}: ChildProps) {
 
             <span className="text-castanho/60 font-bold text-sm mb-1">=</span>
 
-            <div className="flex flex-col items-center bg-white/80 px-3 py-1.5 rounded-2xl border border-castanho/10 min-w-[90px]">
+            <div className="flex flex-col items-center bg-white/80 px-3 py-1.5 rounded-2xl border border-castanho/10 min-w-22.5">
                 <span className="text-[10px] font-bold text-castanho uppercase tracking-wider">
                     {!kcalExcedidas ? 'Restantes' : 'Excedidas'}
                 </span>
