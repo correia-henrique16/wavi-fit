@@ -25,26 +25,35 @@ export async function editUserInfo(dados: TypeUserInfo) {
     const supabase = await createClient()
     const user= await getRequiredUser()
 
-    const {altura, peso_inicial, peso_objetivo, atividade_id, objetivo_id, sexo, nascimento} = dados
+    const {altura, peso_inicial, peso_objetivo, atividade_id, objetivo_id, sexo, nascimento, name} = dados
 
-    const { data, error } = await supabase
-    .from('user_info')
-    .update(([{
-        altura: altura,
-        peso_objetivo: peso_objetivo,
-        peso_inicial: peso_inicial,
-        objetivo_id: objetivo_id,
-        atividade_id: atividade_id,
-        user_id: user.id,
-        data_nascimento: nascimento,
-        sexo: sexo
-    }]))
-    .eq('user_id', user.id)
-    .select()
+    console.log(name)
+    const { data, error } = await supabase.auth.updateUser({
+        data: { full_name: name }
+    })
 
     if (error) {
         throw new Error(error.message)
     } else {
-        return data
+        const { data, error } = await supabase
+        .from('user_info')
+        .update(([{
+            altura: altura,
+            peso_objetivo: peso_objetivo,
+            peso_inicial: peso_inicial,
+            objetivo_id: objetivo_id,
+            atividade_id: atividade_id,
+            user_id: user.id,
+            data_nascimento: nascimento,
+            sexo: sexo
+        }]))
+        .eq('user_id', user.id)
+        .select()
+
+        if (error) {
+            throw new Error(error.message)
+        } else {
+            return data
+        }
     }
 }   

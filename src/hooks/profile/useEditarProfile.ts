@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { TipoUserInfo } from "@/models/db-types/TipoUserInfo";
 import { UserInfoSchema } from "@/models/input/User";
+import { useRouter } from "next/navigation";
 
 export default function useEditarProfile(profile: TipoUserInfo, name: string) {
 
+    const router = useRouter()
 
     const [formData, setFormData] = useState({
         name : name,
@@ -29,9 +31,7 @@ export default function useEditarProfile(profile: TipoUserInfo, name: string) {
         const formData = new FormData(e.currentTarget)
         const data = Object.fromEntries(formData.entries())
 
-        const dadosCompletos = {...data, name}
-
-        const validacao = UserInfoSchema.safeParse(dadosCompletos)
+        const validacao = UserInfoSchema.safeParse(data)
 
         if (!validacao.success) {
             setErrors(validacao.error.format());
@@ -53,6 +53,7 @@ export default function useEditarProfile(profile: TipoUserInfo, name: string) {
                 setErrors({});
                 setServerError('');
                 setSuccess('Perfil editado!')
+                router.push('/profile')
             }
         } catch (error) {
             setServerError('Erro de ligação')

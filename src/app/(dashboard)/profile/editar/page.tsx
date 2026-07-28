@@ -28,7 +28,6 @@ export default async function EditarProfilePage() {
             <EditarProfileClient profile={dados} name={name}/>
         )
     } catch (error: any) {
-        console.error(error)
         throw error
     }
 }
