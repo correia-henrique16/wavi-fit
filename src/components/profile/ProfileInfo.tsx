@@ -35,6 +35,7 @@ export default function ProfileInfo({user}: ChildProps) {
 
     const {idade} = dataToIdade(dataNascimento!)
 
+    const imgSexo = sexo === 'H' ? '/perfil/male.png' : '/perfil/female.png'
 
     return(
         <div className="flex flex-col gap-4 mx-5 pb-6">
@@ -46,10 +47,13 @@ export default function ProfileInfo({user}: ChildProps) {
 
                 <h2 className="text-2xl font-bold text-bordeaux">{nickName}</h2>
 
-                <div className="flex items-center gap-2 text-base font-semibold text-castanho bg-white/60 px-3 py-1 rounded-full border border-castanho/10">
+                <div className="flex items-center gap-4 text-lg font-semibold text-castanho bg-white/60 px-3 py-1 rounded-full border border-castanho/10">
                     <span>{idade} anos</span>
                     <span>•</span>
-                    <span className="uppercase">{sexo}</span>
+                    <span className="flex items-center uppercase">
+                        <img src={imgSexo} alt={sexo} className="w-6 h-6 object-contain" />
+                        {sexo}
+                    </span>
                 </div>
             </div>
 
