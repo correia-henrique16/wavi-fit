@@ -35,7 +35,7 @@ export default function CaloriasDiarias() {
 
     return(
 
-        <div className="bg-white/50 backdrop-blur-sm p-6 rounded-3xl border border-castanho/10 shadow-xs flex flex-col gap-5 mt-9">
+        <div className="bg-white/50 backdrop-blur-sm p-6 rounded-3xl border border-castanho/10 shadow-xs flex flex-col gap-5 mt-15">
             <div className="flex justify-between items-baseline">
                 <span className="text-sm font-bold text-castanho uppercase tracking-wider">
                     Consumo Diário
