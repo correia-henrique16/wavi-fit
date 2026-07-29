@@ -59,7 +59,8 @@ export default function ListarRefeicoesUser({refeicoes, tipos, loading, loadingT
 
                                     return(
                                         <li key={refeicao.id} className="border-b border-bordeaux/50 last:border-b-0">
-                                            <Link href={`/refeicoes/${refeicao.id}`} className="p-1 flex flex-col gap-1 items-center justify-center">
+                                            <Link href={`/refeicoes/${refeicao.id}`} onClick={(e) => e.stopPropagation()} 
+                                             className="p-1 flex flex-col gap-1 items-center justify-center">
                                                 <h2 className="text-bordeaux font-bold text-lg">{refeicao.name}</h2>
                                                 <span className="text-base font-semibold text-bordeaux/90">{macrosRefeicao.kcalRefeicao}kcal</span>
                                             </Link>
