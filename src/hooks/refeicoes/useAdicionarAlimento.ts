@@ -18,7 +18,8 @@ export default function useAdicionarAlimento(alimentosIniciais: AlimentoRefeicao
 
     const listaFiltrada = alimentos.filter(alimento => alimento.name.toLowerCase().includes(pesquisaAtual.toLowerCase()))
 
-    const alimentosFiltrados = listaFiltrada.slice(0, showAmount)
+    // const alimentosFiltrados = listaFiltrada.slice(0, showAmount)
+    const alimentosFiltrados = listaFiltrada
 
     return{
         alimentosFiltrados, setPesquisaAtual, setShowAmount, showAmount,

@@ -17,6 +17,16 @@ export default function ModalQuantidadeAlimentos({alimentoSelecionado, setShowMo
 
     const {quantidade, setQuantidade} = useAdicionarAlimento()
 
+    const handleRegistar = () => {
+        setAlimentosAdicionados(
+            [...alimentosAdicionados, {
+                alimento: alimentoSelecionado,
+                quantidade: quantidade
+            }]
+        )
+        setShowModalQtd(false)
+    }
+
     if (showModalQtd == false) {
         return null
     } else {
@@ -32,12 +42,7 @@ export default function ModalQuantidadeAlimentos({alimentoSelecionado, setShowMo
                     <h3 className="text-lg font-bold text-bordeaux text-center truncate flex-1 px-1">{alimentoSelecionado?.name}</h3>
 
                     <button type="button" className="px-3.5 py-1.5 font-bold text-sm text-bg! bg-bordeaux rounded-xl shrink-0 text-right w-1/4 flex justify-end"
-                     onClick={() => {
-                        setAlimentosAdicionados([...alimentosAdicionados, {
-                            alimento: alimentoSelecionado,
-                            quantidade: quantidade
-                        }])
-                    }}>Registar</button>
+                     onClick={() => handleRegistar()}>Registar</button>
                 </div>
                 
 
