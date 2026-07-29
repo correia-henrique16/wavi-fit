@@ -8,6 +8,7 @@ export default function useAdicionarAlimento(alimentosIniciais: AlimentoRefeicao
     const [showAmount, setShowAmount] = useState(5)
     const [showModalAdd, setShowModalAdd] = useState(false)
     const [showModalQtd, setShowModalQtd] = useState(false)
+    const [showModalEditarQtd, setShowModalEditarQtd] = useState(false)
     const [alimentoSelecionado, setAlimentoSelecionado] = useState<Alimento | null>(null)
 
     const [quantidade, setQuantidade] = useState(1)
@@ -26,6 +27,7 @@ export default function useAdicionarAlimento(alimentosIniciais: AlimentoRefeicao
          setShowModalAdd, showModalAdd, setShowModalQtd, showModalQtd,
          alimentoSelecionado, setAlimentoSelecionado,
          quantidade, setQuantidade,
-         alimentosAdicionados, setAlimentosAdicionados
+         alimentosAdicionados, setAlimentosAdicionados,
+         showModalEditarQtd, setShowModalEditarQtd
     }
 }
