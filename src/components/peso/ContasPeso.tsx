@@ -35,7 +35,7 @@ export default function ContasPeso() {
         : 0
 
     return(
-        <div className="bg-white/50 backdrop-blur-sm p-5 rounded-3xl border border-castanho/10 shadow-xs flex flex-col gap-4 m-5">
+        <div className="bg-white/50 z-30 p-5 rounded-3xl border border-castanho/10 shadow-xs flex flex-col gap-4 m-5">
             
             <div className="grid grid-cols-2 gap-3 text-center">
 
