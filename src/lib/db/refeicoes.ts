@@ -77,6 +77,7 @@ export async function addRefeicao(novaRefeicao: TypeRefeicao) {
         })))
 
         if(error) {
+            console.log(error)
             throw new Error(error.message)
         } else {
             return (data)
