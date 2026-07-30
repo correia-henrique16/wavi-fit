@@ -68,7 +68,7 @@ export default function EditProfile({profile, name}: ChildProps) {
             <div className="flex flex-col gap-1">
                 <p className="text-sm font-semibold text-castanho">Género</p>
                 <div className="grid grid-cols-2 gap-3">
-                    <label className="relative flex items-center justify-center gap-2 p-3 bg-white/70 border border-castanho/10 rounded-xl cursor-pointer has-[:checked]:border-bordeaux has-[:checked]:bg-bordeaux/10 transition-all">
+                    <label className="relative flex items-center justify-center gap-2 p-3 bg-white/70 border border-castanho/10 rounded-xl cursor-pointer has-:checked:border-bordeaux has-:checked:bg-bordeaux/10 transition-all">
                         <input 
                             type="radio" 
                             name="sexo" 
@@ -80,7 +80,7 @@ export default function EditProfile({profile, name}: ChildProps) {
                         <span className="text-base font-bold text-bordeaux">Homem</span>
                     </label>
 
-                    <label className="relative flex items-center justify-center gap-2 p-3 bg-white/70 border border-castanho/10 rounded-xl cursor-pointer has-[:checked]:border-rosa has-[:checked]:bg-rosa/20 transition-all">
+                    <label className="relative flex items-center justify-center gap-2 p-3 bg-white/70 border border-castanho/10 rounded-xl cursor-pointer has-:checked:border-rosa has-:checked:bg-rosa/20 transition-all">
                         <input 
                             type="radio" 
                             name="sexo" 
