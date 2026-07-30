@@ -51,7 +51,7 @@ export function useSignUp() {
                 }
                 
             } else {
-                router.push('/')
+                router.push('/register/info')
             }
         } catch (error) {
             setServerError('Erro de ligação')
