@@ -2,6 +2,7 @@ import EditarProfileClient from "@/components/profile/editar/EditarProfileClient
 import { cookies } from "next/headers"
 import { getRequiredUser } from "@/lib/supabase/user"
 
+export const dynamic = 'force-dynamic'
 
 export default async function EditarProfilePage() {
     const cookieStore = await cookies()

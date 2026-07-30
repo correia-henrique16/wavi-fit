@@ -4,6 +4,8 @@ import ProfileInfo from "@/components/profile/ProfileInfo"
 import { getRequiredUser } from "@/lib/supabase/user"
 import LogoutBtn from "@/components/profile/LogoutBtn"
 
+export const dynamic = 'force-dynamic'
+
 export default async function ProfilePage() {
 
     const user = await getRequiredUser()

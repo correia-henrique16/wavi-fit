@@ -2,6 +2,8 @@ import Link from "next/link";
 import { getRequiredUser } from "@/lib/supabase/user";
 import InfoForm from "@/components/auth/InfoForm";
 
+export const dynamic = 'force-dynamic'
+
 export default async function InfoPage() {
     const user = await getRequiredUser()
     const userName = user.user_metadata.full_name
