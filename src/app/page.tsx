@@ -12,7 +12,7 @@ export default function Home() {
         </div>
 
         <div className="w-1/3 full-centered-flex">
-          <h1>WAVI</h1>
+          <h1>WAVI Fit</h1>
         </div>
 
         <div className="w-1/3 flex justify-end items-center">

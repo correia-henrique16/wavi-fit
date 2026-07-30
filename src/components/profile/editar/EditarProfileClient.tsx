@@ -14,15 +14,15 @@ export default function EditarProfileClient({profile, name}: ChildProps) {
     return(
         <div>
             <nav>
-                <div className="w-1/3 flex justify-baseline items-center">
+                <div className="w-1/4 flex justify-baseline items-center">
                     <BtnVoltar caminho='/profile' />
                 </div>
 
-                <div className="w-1/3 flex full-centered-flex">
-                    <h1>Editar Perfil</h1>
+                <div className="w-2/4 flex full-centered-flex">
+                    <h1 className="text-3xl font-bold text-bordeaux whitespace-nowrap">Editar Perfil</h1>
                 </div>
 
-                <div className="w-1/3 flex justify-end items-center ">
+                <div className="w-1/4 flex justify-end items-center">
                     
                 </div>
             </nav>

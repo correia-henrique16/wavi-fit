@@ -50,7 +50,7 @@ export default function RefeicoesPage() {
                 </div>
             </nav>
 
-            <main className="main-nav">
+            <main className="main-nav pb-30">
                 <MetaDiaria kcalDia={kcalDia} userInfo={userInfo} pesoAtual={pesoAtual}/>
 
                 <ListarData setDate={setDate} anteriorDataString={anteriorDataString} dataSelecionada={dataSelecionada} 

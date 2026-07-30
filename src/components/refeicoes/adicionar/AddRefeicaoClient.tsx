@@ -20,7 +20,7 @@ export default function AddRefeicaoClient({modal} : {modal:string | undefined}) 
     
     const {setPesquisaAtual, alimentosFiltrados, setShowAmount, showAmount, setShowModalAdd, showModalAdd,
         setShowModalQtd ,showModalQtd, alimentoSelecionado, setAlimentoSelecionado,
-        setAlimentosAdicionados, alimentosAdicionados} = useAdicionarAlimento()
+        setAlimentosAdicionados, alimentosAdicionados, setShowModalEditarQtd, showModalEditarQtd} = useAdicionarAlimento()
 
     const handleMudarData = (dia: Date | undefined) => {
         if (dia) {
@@ -61,7 +61,8 @@ export default function AddRefeicaoClient({modal} : {modal:string | undefined}) 
                     setAlimentosAdicionados={setAlimentosAdicionados} alimentosAdicionados={alimentosAdicionados}
                 /> 
 
-                <ListarAlimentosRefeicao alimentosAdicionados={alimentosAdicionados}/>
+                <ListarAlimentosRefeicao alimentosAdicionados={alimentosAdicionados} setShowModalEditarQtd={setShowModalEditarQtd}
+                 showModalEditarQtd={showModalEditarQtd} setAlimentosAdicionados={setAlimentosAdicionados} />
             </main>
         </div>
         

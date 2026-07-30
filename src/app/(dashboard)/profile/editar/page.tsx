@@ -17,7 +17,6 @@ export default async function EditarProfilePage() {
         
         if (!response.ok) {
             const erro = await response.json()
-            console.error(erro)
             throw new Error(JSON.stringify(erro))
         }
         

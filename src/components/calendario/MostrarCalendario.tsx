@@ -14,7 +14,7 @@ interface ChildProps {
 export default function MostrarCalendario({setMostrarCalendario, mostrarCalendario, dataSelecionada, handleMudarData, label, name}: ChildProps) {
     
     return(
-        <div className="flex flex-col gap-2 my-4">
+        <div className="flex flex-col gap-1">
             <label className="text-bordeaux font-bold">{label}</label>
             
 
@@ -29,7 +29,7 @@ export default function MostrarCalendario({setMostrarCalendario, mostrarCalendar
             </button>
 
             {mostrarCalendario && (
-                <div className="absolute z-50 mt-2 bg-white border-2 border-bordeaux/20 shadow-xl rounded-2xl p-4 text-bordeaux left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0"
+                <div className="absolute z-50 mt-20 bg-white border-2 border-bordeaux/20 shadow-xl rounded-2xl p-4 text-bordeaux left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0"
                 onClick={(e) => e.stopPropagation()}
                 >
                     <DayPicker 

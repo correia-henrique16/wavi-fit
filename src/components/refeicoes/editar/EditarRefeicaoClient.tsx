@@ -23,7 +23,7 @@ export default function EditarRefeicaoClient({refeicao, modal}: {refeicao: Refei
 
     const {setPesquisaAtual, alimentosFiltrados, setShowAmount, showAmount, setShowModalAdd, showModalAdd,
         setShowModalQtd ,showModalQtd, alimentoSelecionado, setAlimentoSelecionado,
-        setAlimentosAdicionados, alimentosAdicionados} = useAdicionarAlimento(alimentosIniciais)
+        setAlimentosAdicionados, alimentosAdicionados, setShowModalEditarQtd, showModalEditarQtd} = useAdicionarAlimento(alimentosIniciais)
 
     const {setShowConfirm, showConfirm} = useApagarRefeicoes()
 
@@ -60,7 +60,8 @@ export default function EditarRefeicaoClient({refeicao, modal}: {refeicao: Refei
                     setAlimentosAdicionados={setAlimentosAdicionados} alimentosAdicionados={alimentosAdicionados}
                 /> 
 
-                <ListarAlimentosRefeicao alimentosAdicionados={alimentosAdicionados}/>
+                <ListarAlimentosRefeicao alimentosAdicionados={alimentosAdicionados} setShowModalEditarQtd={setShowModalEditarQtd}
+                    showModalEditarQtd={showModalEditarQtd} setAlimentosAdicionados={setAlimentosAdicionados} />
 
                 {showConfirm && <ConfirmarApagarRefeicao setShowConfirm={setShowConfirm} idRefeicao={refeicao.id}/>}
 
