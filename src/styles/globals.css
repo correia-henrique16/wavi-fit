@@ -16,7 +16,7 @@
   }
 
   h1 {
-    @apply text-4xl font-bold text-bordeaux tracking-tight;
+    @apply text-3xl font-bold text-bordeaux tracking-tight;
   }
 
   input {
