@@ -35,7 +35,7 @@ Layered architecture: API routes handle validation and control only, delegating 
 
 ## Screenshots
 
-![Dashboard](public/screenshots/dashboard.PNG)
-![Meals](public/screenshots/refeicoes.PNG)
-![Weight History](public/screenshots/historico_peso.PNG)
-![Profile](public/screenshots/profile.PNG)
+![Dashboard](public/screenshots/dashboard.png)
+![Meals](public/screenshots/refeicoes.png)
+![Weight History](public/screenshots/historico_peso.png)
+![Profile](public/screenshots/profile.png)
