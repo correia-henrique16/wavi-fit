@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wavi Fit
 
-## Getting Started
+Full-stack nutrition and body-weight tracking app, built to consolidate Next.js, TypeScript, and full-stack architecture skills — with a deliberate focus on algorithmic reasoning and independent problem-solving, minimizing AI-generated code for the core logic and architecture.
 
-First, run the development server:
+🔗 [Live Demo](https://wavi-fit.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Calculates Basal Metabolic Rate (Mifflin-St Jeor formula) and TDEE based on individual user data
+- Adjusts daily calorie target based on goal (deficit/surplus), with safety floors (1500 kcal men / 1200 kcal women)
+- Meal diary with food logging, real-time macro calculation, and carb/protein/fat breakdown
+- Weight history with progress tracking against goal
+- Day-by-day navigation with dynamic labels ("Today", "Yesterday", "Tomorrow")
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Next.js (App Router) + TypeScript
+- Supabase (Postgres, Auth, RLS)
+- Zod for schema validation
+- Recharts for data visualization
 
-## Learn More
+## Architecture
 
-To learn more about Next.js, take a look at the following resources:
+Layered architecture: API routes handle validation and control only, delegating database access to dedicated modules in `lib/db/`. Types are split between `models/input` (incoming data) and `models/db-types` (database shape), with calculation logic isolated in `utils/`, kept separate from UI components and routes.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Supabase schema:** `user_info`, `historico_peso`, `alimentos`, `refeicoes`, `refeicao_alimentos`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## What I Learned
 
-## Deploy on Vercel
+- Relational database modeling and RLS in Supabase
+- Schema validation with Zod, including separating input types from response types
+- Implementing nutritional calculation algorithms (Mifflin-St Jeor) with business rules and safety constraints
+- Custom date/timezone utilities (age calculation, day navigation) built without external libraries
+- Next.js App Router: server vs. client components, API routes, `searchParams`/`params` as Promises
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Screenshots
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+_(add 3-4 screenshots here — main dashboard, meal diary, weight history)_
